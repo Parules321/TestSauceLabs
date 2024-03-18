@@ -12,7 +12,8 @@
 	<test thread-count="5" name="Test">
 		<classes>
 			
-			<class name="com.naveenautomation.tests.MyAccountPageTest" />
+			<class name="com.naveenautomation.tests.AccountLoginPageTest" />
+			<class name="com.naveenautomation.tests.AddressBookPageTest" />
 		
 		</classes>
 	</test> <!-- Test -->
