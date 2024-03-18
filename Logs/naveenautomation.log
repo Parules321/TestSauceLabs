@@ -108,3 +108,48 @@
 2024-03-18 05:15:28 INFO  TestBase:77 - Finding element by : By.cssSelector: #content div>div form>input
 2024-03-18 05:15:28 INFO  TestBase:83 - Found element by : By.cssSelector: #content div>div form>input
 2024-03-18 05:15:28 INFO  TestBase:89 - Clicking on element by : [[ChromeDriver: chrome on WINDOWS (9b3bd8fc0eb798442f54578eda7e3651)] -> css selector: #content div>div form>input]
+2024-03-18 10:15:45 INFO  TestBase:54 - Launching Chrome Browser
+2024-03-18 10:15:47 INFO  TestBase:41 - Loading Page in Browser
+2024-03-18 10:15:47 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 10:15:49 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 10:15:49 INFO  TestBase:13 - Test Starts : validateGetEachCellValue
+2024-03-18 10:15:51 INFO  TestBase:17 - Test Passed : validateGetEachCellValue
+2024-03-18 10:15:51 INFO  TestBase:54 - Launching Chrome Browser
+2024-03-18 10:15:52 INFO  TestBase:41 - Loading Page in Browser
+2024-03-18 10:15:52 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 10:15:55 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 10:15:55 INFO  TestBase:13 - Test Starts : validateLogin
+2024-03-18 10:15:55 INFO  TestBase:77 - Finding element by : By.id: input-email
+2024-03-18 10:15:55 INFO  TestBase:83 - Found element by : By.id: input-email
+2024-03-18 10:15:55 INFO  TestBase:77 - Finding element by : By.id: input-password
+2024-03-18 10:15:55 INFO  TestBase:83 - Found element by : By.id: input-password
+2024-03-18 10:15:55 INFO  TestBase:77 - Finding element by : By.cssSelector: #content div>div form>input
+2024-03-18 10:15:55 INFO  TestBase:83 - Found element by : By.cssSelector: #content div>div form>input
+2024-03-18 10:15:55 INFO  TestBase:89 - Clicking on element by : [[ChromeDriver: chrome on WINDOWS (9aa70ea9a459380aff9f1bdd479e6a8d)] -> css selector: #content div>div form>input]
+2024-03-18 10:15:56 INFO  TestBase:17 - Test Passed : validateLogin
+2024-03-18 10:15:56 INFO  TestBase:54 - Launching Chrome Browser
+2024-03-18 10:15:57 INFO  TestBase:41 - Loading Page in Browser
+2024-03-18 10:15:57 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 10:16:01 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 10:16:01 INFO  TestBase:13 - Test Starts : validateLogin
+2024-03-18 10:16:01 INFO  TestBase:77 - Finding element by : By.id: input-email
+2024-03-18 10:16:01 INFO  TestBase:83 - Found element by : By.id: input-email
+2024-03-18 10:16:01 INFO  TestBase:77 - Finding element by : By.id: input-password
+2024-03-18 10:16:01 INFO  TestBase:83 - Found element by : By.id: input-password
+2024-03-18 10:16:01 INFO  TestBase:77 - Finding element by : By.cssSelector: #content div>div form>input
+2024-03-18 10:16:01 INFO  TestBase:83 - Found element by : By.cssSelector: #content div>div form>input
+2024-03-18 10:16:01 INFO  TestBase:89 - Clicking on element by : [[ChromeDriver: chrome on WINDOWS (ce99a4c7e995c7d0bf91cce388a0b40c)] -> css selector: #content div>div form>input]
+2024-03-18 10:16:01 INFO  TestBase:17 - Test Passed : validateLogin
+2024-03-18 10:16:02 INFO  TestBase:54 - Launching Chrome Browser
+2024-03-18 10:16:03 INFO  TestBase:41 - Loading Page in Browser
+2024-03-18 10:16:03 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 10:16:05 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 10:16:05 INFO  TestBase:13 - Test Starts : validateLogin
+2024-03-18 10:16:05 INFO  TestBase:77 - Finding element by : By.id: input-email
+2024-03-18 10:16:05 INFO  TestBase:83 - Found element by : By.id: input-email
+2024-03-18 10:16:05 INFO  TestBase:77 - Finding element by : By.id: input-password
+2024-03-18 10:16:05 INFO  TestBase:83 - Found element by : By.id: input-password
+2024-03-18 10:16:05 INFO  TestBase:77 - Finding element by : By.cssSelector: #content div>div form>input
+2024-03-18 10:16:05 INFO  TestBase:83 - Found element by : By.cssSelector: #content div>div form>input
+2024-03-18 10:16:05 INFO  TestBase:89 - Clicking on element by : [[ChromeDriver: chrome on WINDOWS (513bc60b852222dd00b28abecbafa706)] -> css selector: #content div>div form>input]
+2024-03-18 10:16:06 INFO  TestBase:17 - Test Passed : validateLogin
