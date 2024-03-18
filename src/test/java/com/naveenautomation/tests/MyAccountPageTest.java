@@ -5,45 +5,51 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.naveenautomation.pages.AccountLoginPage;
+import com.naveenautomation.pages.ChangePwdPage;
 import com.naveenautomation.pages.MyAccountPage;
-import com.naveenautomation.pages.RegisterAccountPage;
 import com.naveenautomation.testbase.TestBase;
 
 public class MyAccountPageTest extends TestBase {
-	RegisterAccountPage registerAccountPage;
+
+	AccountLoginPage page;
 	MyAccountPage myAccountPage;
+	ChangePwdPage changePwdPage;
 
 	@BeforeMethod
 	public void launchBrowser() {
 		intialisation();
-		registerAccountPage = new RegisterAccountPage();
-		myAccountPage = registerAccountPage.registerAccount(getFirstName(), getLastName(), getPhoneNo(), getEmail(),
-				getPassword());
+		page = new AccountLoginPage();
 	}
 
-	@Test(priority = 1)
-	public void verifyMyAccountPageTitleTest() {
-		String accountPageTitle = myAccountPage.verifyMyAccountPageTitle();
-		Assert.assertEquals(accountPageTitle, "My Account", "Actual title does not match the expected title.");
+	@Test
+	public void validateLogin() {
+		AccountLoginPage page = new AccountLoginPage();
+		myAccountPage = page.submitLogin("dean@gmail.com", "dean");
+		String myAccountText = myAccountPage.getMyAccountText();
+		Assert.assertEquals(myAccountText, "My Account1");
 	}
 
-	@Test(priority = 2)
-	public void validateContactBtnClickTest() {
-		myAccountPage.clickOnContactBtn();
-		String landingContactPageTitle = driver.getTitle();
-		Assert.assertEquals(landingContactPageTitle, "Contact Us", "Test Failed - Landing page titles did not match.");
-	}
+	@Test
+	public void validatePasswordUpdate() {
 
-	@Test(priority = 3)
-	public void validateGiftCertificateBtnClickTest() {
-		myAccountPage.clickOnGiftCerificateBtn();
-		String landingGiftPageTitle = driver.getTitle();
-		Assert.assertEquals(landingGiftPageTitle, "Purchase a Gift Certificate",
-				"Test Failed - Landing page titles did not match.");
+		// Login in
+		myAccountPage = page.submitLogin("dean@gmail.com", "dean");
+		// Updating Password
+		changePwdPage = myAccountPage.clickChangePasswordBtn();
+		// Updating Password
+		myAccountPage = changePwdPage.updatePassword("dean", "dean");
+
+		String pwdAlertMessage = myAccountPage.getPasswordUpdateAlertText();
+
+		// Asserting whether password change is successfully or not
+		Assert.assertEquals("Success: Your password has been successfully updated.", pwdAlertMessage);
+
 	}
 
 	@AfterMethod
 	public void closeBrowser() {
 		tearDown();
 	}
+
 }

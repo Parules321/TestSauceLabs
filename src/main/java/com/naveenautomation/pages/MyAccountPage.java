@@ -1,5 +1,7 @@
 package com.naveenautomation.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -7,30 +9,42 @@ import org.openqa.selenium.support.PageFactory;
 import com.naveenautomation.testbase.TestBase;
 
 public class MyAccountPage extends TestBase {
-
 	public MyAccountPage() {
-		PageFactory.initElements(driver, this); // this method is defined inside the constructor to initialize all the
-												// elements of the current class object.
+		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//a[text() ='Contact Us']")
-	WebElement contactBtn;
+	@FindBy(css = "#content>ul:nth-of-type(1) li:nth-of-type(2) a")
+	WebElement changePwdBtn;
 
-	@FindBy(xpath = "//a[text()='Gift Certificates']")
-	WebElement giftCertificateBtn;
+	@FindBy(css = "div.alert")
+	WebElement successBanner;
 
-	public String verifyMyAccountPageTitle() {
-		return driver.getTitle();
+	@FindBy(css = "#account-account>div.row h2:first-of-type")
+	WebElement myAccountText;
+
+	@FindBy(css = "#column-right a")
+	List<WebElement> sideNavWebelementList;
+
+	public ChangePwdPage clickChangePasswordBtn() {
+		changePwdBtn.click();
+		return new ChangePwdPage();
 	}
 
-	public ContactUsPage clickOnContactBtn() {
-		contactBtn.click();
-		return new ContactUsPage();
+	public String getPasswordUpdateAlertText() {
+		return successBanner.getText();
 	}
 
-	public GiftCertificatePage clickOnGiftCerificateBtn() {
-		giftCertificateBtn.click();
-		return new GiftCertificatePage();
+	public String getMyAccountText() {
+		return myAccountText.getText();
 	}
 
+	public AddressBookPage clickSideNavMenuItem(String item) {
+		for (int i = 0; i < sideNavWebelementList.size(); i++) {
+			if (sideNavWebelementList.get(i).getText().equalsIgnoreCase(item)) {
+				sideNavWebelementList.get(i).click();
+				break;
+			}
+		}
+		return new AddressBookPage();
+	}
 }

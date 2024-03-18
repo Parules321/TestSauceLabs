@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.naveenautomation.tests.GiftCertificatePageTest">
+      <class name="com.naveenautomation.tests.AccountLoginPageTest">
         <methods>
-          <include name="verifyGiftPageTitleTest"/>
-          <include name="launchBrowser"/>
           <include name="closeBrowser"/>
-          <include name="verifySubmitGiftDetailsTest"/>
+          <include name="launchBrowser"/>
+          <include name="setUpLogger"/>
+          <include name="validateLogin" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.naveenautomation.tests.GiftCertificatePageTest -->
+      </class> <!-- com.naveenautomation.tests.AccountLoginPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
