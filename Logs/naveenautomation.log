@@ -71,3 +71,40 @@
 2024-03-06 23:24:45 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
 2024-03-06 23:24:47 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
 2024-03-06 23:24:47 INFO  TestBase:77 - Finding element by : By.id: input-email
+2024-03-18 05:15:08 INFO  TestBase:54 - Launching Chrome Browser
+2024-03-18 05:15:10 INFO  TestBase:41 - Loading Page in Browser
+2024-03-18 05:15:10 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 05:15:13 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 05:15:14 INFO  TestBase:54 - Launching Chrome Browser
+2024-03-18 05:15:15 INFO  TestBase:41 - Loading Page in Browser
+2024-03-18 05:15:15 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 05:15:19 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 05:15:19 INFO  TestBase:77 - Finding element by : By.id: input-email
+2024-03-18 05:15:19 INFO  TestBase:83 - Found element by : By.id: input-email
+2024-03-18 05:15:19 INFO  TestBase:77 - Finding element by : By.id: input-password
+2024-03-18 05:15:19 INFO  TestBase:83 - Found element by : By.id: input-password
+2024-03-18 05:15:19 INFO  TestBase:77 - Finding element by : By.cssSelector: #content div>div form>input
+2024-03-18 05:15:19 INFO  TestBase:83 - Found element by : By.cssSelector: #content div>div form>input
+2024-03-18 05:15:19 INFO  TestBase:89 - Clicking on element by : [[ChromeDriver: chrome on WINDOWS (dd7a56143bb85a7efb31d7fe0d64b919)] -> css selector: #content div>div form>input]
+2024-03-18 05:15:20 INFO  TestBase:54 - Launching Chrome Browser
+2024-03-18 05:15:21 INFO  TestBase:41 - Loading Page in Browser
+2024-03-18 05:15:21 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 05:15:23 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 05:15:24 INFO  TestBase:77 - Finding element by : By.id: input-email
+2024-03-18 05:15:24 INFO  TestBase:83 - Found element by : By.id: input-email
+2024-03-18 05:15:24 INFO  TestBase:77 - Finding element by : By.id: input-password
+2024-03-18 05:15:24 INFO  TestBase:83 - Found element by : By.id: input-password
+2024-03-18 05:15:24 INFO  TestBase:77 - Finding element by : By.cssSelector: #content div>div form>input
+2024-03-18 05:15:24 INFO  TestBase:83 - Found element by : By.cssSelector: #content div>div form>input
+2024-03-18 05:15:24 INFO  TestBase:89 - Clicking on element by : [[ChromeDriver: chrome on WINDOWS (6c38eb483259f8f18af074f3009bc5e2)] -> css selector: #content div>div form>input]
+2024-03-18 05:15:24 INFO  TestBase:54 - Launching Chrome Browser
+2024-03-18 05:15:25 INFO  TestBase:41 - Loading Page in Browser
+2024-03-18 05:15:25 INFO  TestBase:35 - Navigating to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 05:15:28 INFO  TestBase:41 - Navigated to URL : https://naveenautomationlabs.com/opencart/index.php?route=account/login
+2024-03-18 05:15:28 INFO  TestBase:77 - Finding element by : By.id: input-email
+2024-03-18 05:15:28 INFO  TestBase:83 - Found element by : By.id: input-email
+2024-03-18 05:15:28 INFO  TestBase:77 - Finding element by : By.id: input-password
+2024-03-18 05:15:28 INFO  TestBase:83 - Found element by : By.id: input-password
+2024-03-18 05:15:28 INFO  TestBase:77 - Finding element by : By.cssSelector: #content div>div form>input
+2024-03-18 05:15:28 INFO  TestBase:83 - Found element by : By.cssSelector: #content div>div form>input
+2024-03-18 05:15:28 INFO  TestBase:89 - Clicking on element by : [[ChromeDriver: chrome on WINDOWS (9b3bd8fc0eb798442f54578eda7e3651)] -> css selector: #content div>div form>input]
