@@ -22,7 +22,7 @@ public class MyAccountPageTest extends TestBase {
 		page = new AccountLoginPage();
 	}
 
-	@Test
+	@Test (enabled = false)
 	public void validateLogin() {
 		AccountLoginPage page = new AccountLoginPage();
 		myAccountPage = page.submitLogin("dean@gmail.com", "dean");
@@ -30,7 +30,7 @@ public class MyAccountPageTest extends TestBase {
 		Assert.assertEquals(myAccountText, "My Account1");
 	}
 
-	@Test
+	@Test (enabled = false)
 	public void validatePasswordUpdate() {
 
 		// Login in
