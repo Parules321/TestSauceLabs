@@ -22,9 +22,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class TestBase {
 	public static WebDriver driver;
 	private static String browserName = System.getProperty("browser");
-	private static String environmentUrl = System.getProperty("environment");
 	//private static Browsers DEFAULT_BROWSER = Browsers.CHROME;
-	//private static Environment DEFAULT_ENV = Environment.PROD;
+	private static Environment DEFAULT_ENV = Environment.PROD;
 	public static Logger logger;
 	private WebDriverEvents events;
 	private EventFiringWebDriver eDriver;
@@ -41,7 +40,7 @@ public class TestBase {
 		setBrowserForTesting();
 		driverManagement();
 		logger.info("Loading Page in Browser");
-		driver.get(environmentUrl);
+		driver.get(DEFAULT_ENV.getEnvUrl());
 	}
 
 	private void driverManagement() {
