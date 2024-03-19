@@ -22,15 +22,15 @@ public void launchBrowser() {
 	page = new AccountLoginPage();
 }
 
-@Test(enabled = false)
+@Test
 public void validateUserCanAddNewAddress() {
-	myAccountPage = page.submitLogin("mansan@gmail.com", "Password2");
+	myAccountPage = page.submitLogin("dean@gmail.com", "Password1");
 	addressBookPage = myAccountPage.clickSideNavMenuItem("Address Book");
 	addAddressPage = addressBookPage.clickNewAddressBtn();
 	addressBookPage = addAddressPage.SubmitAddress("Munna", "Thakur", "Dhinchak Pooja corp", "Khandala", "Mumbai",
 			"L6Z3Y6", "Canada", "Ontario");
 	String bannerText = addressBookPage.getBannerText();
-	Assert.assertEquals(bannerText, "Your address has been successfully added");
+	Assert.assertEquals(bannerText, "Your address has been successfully added1");
 }
 
 @AfterMethod
