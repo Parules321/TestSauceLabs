@@ -21,10 +21,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 	public static WebDriver driver;
-	private static String browserName = System.getProperty("browser");
-	private static String environmentUrl = System.getProperty("environment");
-	private static Browsers defaultBrowser = Browsers.CHROME;
-	private static Environment defaultEnv = Environment.PROD;
+	private static String defaultBrowser;
+	private static String defaultEnv;
 	public static Logger logger;
 	private WebDriverEvents events;
 	private EventFiringWebDriver eDriver;
@@ -41,12 +39,9 @@ public class TestBase {
 		setBrowserForTesting();
 		driverManagement();
 		logger.info("Loading Page in Browser");
-		if (isRunningOnJenkins()) {
-			driver.get(environmentUrl);
-		} else {
-			driver.get(defaultEnv.getEnvUrl());
+		driver.get(getDefaultEnv());
 		}
-	}
+	
 
 	private void driverManagement() {
 		driver.manage().window().maximize();
@@ -55,8 +50,7 @@ public class TestBase {
 
 	private void setBrowserForTesting() {
 
-		if (isRunningOnJenkins()) {
-			switch (browserName) {
+			switch (getDefaultBrowser()) {
 			case "Chrome":
 				WebDriverManager.chromedriver().setup();
 				logger.info("Launching Chrome Browser");
@@ -77,27 +71,6 @@ public class TestBase {
 				throw new IllegalArgumentException();
 			}
 
-		} else {
-			switch (defaultBrowser) {
-			case CHROME:
-				WebDriverManager.chromedriver().setup();
-				logger.info("Launching Chrome Browser");
-				driver = new ChromeDriver();
-				break;
-			case FIREFOX:
-				WebDriverManager.firefoxdriver().setup();
-				logger.info("Launching Firefox Browser");
-				driver = new FirefoxDriver();
-				break;
-			case EDGE:
-				WebDriverManager.edgedriver().setup();
-				logger.info("Launching Edge Browser");
-				driver = new EdgeDriver();
-				break;
-
-			default:
-				throw new IllegalArgumentException();
-			}
 
 			// Intialising Event Firing Webdriver
 			eDriver = new EventFiringWebDriver(driver);
@@ -109,10 +82,32 @@ public class TestBase {
 			eDriver.register(events);
 			driver = eDriver;
 		}
-	}
+	
 
 	public void tearDown() {
 		driver.close();
+	}
+
+	private String getDefaultBrowser() {
+		if (isRunningOnJenkins()) {
+			defaultBrowser.equals(System.getProperty("browser"));
+		} else {
+			defaultBrowser.equals(Browsers.CHROME.getBrowserName());
+		}
+
+		return defaultBrowser;
+
+	}
+
+	private String getDefaultEnv() {
+
+		if (isRunningOnJenkins()) {
+			defaultEnv.equals(System.getProperty("environment"));
+		} else {
+			defaultEnv.equals(Environment.PROD.getEnvUrl());
+		}
+
+		return defaultEnv;
 	}
 
 	private static boolean isRunningOnJenkins() {

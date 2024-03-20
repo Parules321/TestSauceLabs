@@ -1,12 +1,12 @@
 package com.naveenautomation.browsers;
 
 public enum Browsers {
-	CHROME("Google Chrome"),
-	EDGE("Microsoft Edge"),
-	FIREFOX("Mozilla Firefox");
+	CHROME("Chrome"),
+	EDGE("Edge"),
+	FIREFOX("Firefox");
 	
 	
-	public String browserName;
+	private String browserName;
 
 	Browsers(String browser) {
 		this.browserName=browser;

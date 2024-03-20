@@ -5,7 +5,7 @@ public enum Environment {
 	STAGE("https://naveenautomationlabsstage.com/opencart/index.php?route=account/login"),
 	PROD("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
 
-	String envUrl;
+	private String envUrl;
 
 	Environment(String envUrl) {
 		this.envUrl = envUrl;
