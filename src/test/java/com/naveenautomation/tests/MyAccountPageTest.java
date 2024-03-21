@@ -1,5 +1,7 @@
 package com.naveenautomation.tests;
 
+import java.net.MalformedURLException;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,7 +19,7 @@ public class MyAccountPageTest extends TestBase {
 	ChangePwdPage changePwdPage;
 
 	@BeforeMethod
-	public void launchBrowser() {
+	public void launchBrowser() throws MalformedURLException {
 		intialisation();
 		page = new AccountLoginPage();
 	}

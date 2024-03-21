@@ -8,7 +8,7 @@ import com.naveenautomation.testbase.TestBase;
 
 public class AccountLoginPage extends TestBase {
 	public AccountLoginPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(defaultWebDriver, this);
 	}
 
 	@FindBy(id = "input-email")

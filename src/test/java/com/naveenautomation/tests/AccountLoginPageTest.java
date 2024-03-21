@@ -1,6 +1,7 @@
 package com.naveenautomation.tests;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +15,7 @@ import com.naveenautomation.utility.ExcelUtils;
 public class AccountLoginPageTest extends TestBase {
 
 	@BeforeMethod
-	public void launchBrowser() {
+	public void launchBrowser() throws MalformedURLException {
 		intialisation();
 	}
 

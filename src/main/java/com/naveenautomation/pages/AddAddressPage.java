@@ -9,7 +9,7 @@ import com.naveenautomation.testbase.TestBase;
 
 public class AddAddressPage extends TestBase {
 	public AddAddressPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(defaultWebDriver, this);
 	}
 
 	@FindBy(id = "input-firstname")

@@ -9,7 +9,7 @@ import com.naveenautomation.testbase.TestBase;
 
 public class AddressBookPage extends TestBase {
 	public AddressBookPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(defaultWebDriver, this);
 	}
 
 	@FindBy(css = "div.buttons.clearfix div:last-of-type a")

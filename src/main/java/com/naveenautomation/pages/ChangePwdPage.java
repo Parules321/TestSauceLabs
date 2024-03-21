@@ -8,7 +8,7 @@ import com.naveenautomation.testbase.TestBase;
 
 public class ChangePwdPage extends TestBase {
 	public ChangePwdPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(defaultWebDriver, this);
 	}
 
 	@FindBy(id = "input-password")

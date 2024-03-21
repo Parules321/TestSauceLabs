@@ -10,7 +10,7 @@ import com.naveenautomation.testbase.TestBase;
 
 public class MyAccountPage extends TestBase {
 	public MyAccountPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(defaultWebDriver, this);
 	}
 
 	@FindBy(css = "#content>ul:nth-of-type(1) li:nth-of-type(2) a")

@@ -22,7 +22,7 @@ public class Utility extends TestBase {
 		// Save the screen shot in a file using TakesScreenshot interface
 		// casts the driver object to the TakesScreenshot interface which allows 
 		//the WebDriver instance to capture a screenshot of the current window.
-		File screenShotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File screenShotFile = ((TakesScreenshot) defaultWebDriver).getScreenshotAs(OutputType.FILE);
 
 		// Save the screenshot in root directory ./. make sure to include time stamp, extension for the file type, folder name
 		try {
