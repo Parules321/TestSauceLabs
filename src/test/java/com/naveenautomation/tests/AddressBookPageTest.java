@@ -30,7 +30,7 @@ public void validateUserCanAddNewAddress() {
 	addressBookPage = addAddressPage.SubmitAddress("Munna", "Thakur", "Dhinchak Pooja corp", "Khandala", "Mumbai",
 			"L6Z3Y6", "Canada", "Ontario");
 	String bannerText = addressBookPage.getBannerText();
-	Assert.assertEquals(bannerText, "Your address has been successfully added");
+	Assert.assertEquals(bannerText, "Your address has been successfully added1");
 }
 
 @AfterMethod
