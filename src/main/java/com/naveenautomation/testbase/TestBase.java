@@ -10,12 +10,14 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.BeforeClass;
 
 import com.naveenautomation.browsers.Browsers;
 import com.naveenautomation.env.Environment;
 import com.naveenautomation.listeners.WebDriverEvents;
+import com.naveenautomation.utility.OptionsUtil;
 import com.naveenautomation.utility.WebDriverUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -37,7 +39,7 @@ public class TestBase {
 	}
 
 	public void intialisation() throws MalformedURLException {
-		setBrowserForTesting();
+		setDriver();
 		driverManagement();
 		logger.info("Loading Page in Browser");
 		defaultWebDriver.get(getDefaultEnv());
@@ -48,17 +50,17 @@ public class TestBase {
 		defaultWebDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	}
 
-	private void setBrowserForTesting() throws MalformedURLException {
+	private void setDriver() throws MalformedURLException {
 
 		switch (getDefaultBrowser()) {
 		case "chrome":
-			defaultWebDriver = WebDriverUtil.getGridChromeDriver();
-			break;
+			defaultWebDriver = getDefaultChromeDriver();
+			break; 
 		case "firefox":
-			defaultWebDriver = WebDriverUtil.getHeadlessGridFirefoxDriver();
+			defaultWebDriver = getDefaultFirefoxDriver();
 			break;
 		case "MicrosoftEdge":
-			defaultWebDriver = WebDriverUtil.getLocalIncognitoEdgeDriver();
+			defaultWebDriver = getDefaultEdgeDriver();
 			break;
 
 		default:
@@ -79,7 +81,6 @@ public class TestBase {
 	public void tearDown() {
 		defaultWebDriver.close();
 	}
-		
 
 	private static String getDefaultBrowser() {
 		if (isRunningOnJenkins()) {
@@ -96,12 +97,51 @@ public class TestBase {
 			defaultEnv = System.getProperty("environment");
 		} else {
 			defaultEnv = Environment.PROD.getEnvUrl();
-		}	
+		}
 		return defaultEnv;
 	}
 
+	private static WebDriver getDefaultFirefoxDriver() throws MalformedURLException {
+
+		if (isRunningOnJenkins() && isGridReady()) {
+			WebDriverUtil.getRemoteFirefoxDriver("Standard");
+		}
+
+		else {
+			WebDriverUtil.getFirefoxDriver("Headless");
+		}
+
+		return defaultWebDriver;
+	}
+
+	private static WebDriver getDefaultEdgeDriver() throws MalformedURLException {
+		if (isRunningOnJenkins() && isGridReady()) {
+			WebDriverUtil.getRemoteEdgeDriver("Incognito");
+		}
+
+		else {
+			WebDriverUtil.getEdgeDriver("Standard");
+		}
+
+		return defaultWebDriver;
+	}
+
+	private static WebDriver getDefaultChromeDriver() throws MalformedURLException {
+		if (isRunningOnJenkins() && isGridReady()) {
+			WebDriverUtil.getRemoteChromeDriver("Headless");
+		} else {
+			WebDriverUtil.getChromeDriver("Incognito");
+		}
+		return defaultWebDriver;
+	}
+
 	private static boolean isRunningOnJenkins() {
-		// Check if a Jenkins-specific environment variable is set
+		// Check if Jenkins-specific environment variable is set
 		return System.getenv("JENKINS_HOME") != null;
+	}
+
+	private static boolean isGridReady() {
+		return System.getProperty("grid.url") != null;
+
 	}
 }
