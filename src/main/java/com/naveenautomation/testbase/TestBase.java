@@ -1,6 +1,9 @@
 package com.naveenautomation.testbase;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
+import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.BasicConfigurator;
@@ -8,19 +11,13 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.BeforeClass;
 
 import com.naveenautomation.browsers.Browsers;
 import com.naveenautomation.env.Environment;
 import com.naveenautomation.listeners.WebDriverEvents;
-import com.naveenautomation.utility.OptionsUtil;
 import com.naveenautomation.utility.WebDriverUtil;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 	public static WebDriver defaultWebDriver;
@@ -55,7 +52,7 @@ public class TestBase {
 		switch (getDefaultBrowser()) {
 		case "chrome":
 			defaultWebDriver = getDefaultChromeDriver();
-			break; 
+			break;
 		case "firefox":
 			defaultWebDriver = getDefaultFirefoxDriver();
 			break;
@@ -103,7 +100,7 @@ public class TestBase {
 
 	private static WebDriver getDefaultFirefoxDriver() throws MalformedURLException {
 
-		if (isRunningOnJenkins() && isGridReady()) {
+		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
 			WebDriverUtil.getRemoteFirefoxDriver("Standard");
 		}
 
@@ -115,7 +112,7 @@ public class TestBase {
 	}
 
 	private static WebDriver getDefaultEdgeDriver() throws MalformedURLException {
-		if (isRunningOnJenkins() && isGridReady()) {
+		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
 			WebDriverUtil.getRemoteEdgeDriver("Incognito");
 		}
 
@@ -127,8 +124,8 @@ public class TestBase {
 	}
 
 	private static WebDriver getDefaultChromeDriver() throws MalformedURLException {
-		if (isRunningOnJenkins() && isGridReady()) {
-			WebDriverUtil.getRemoteChromeDriver("Headless");
+		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
+			WebDriverUtil.getRemoteChromeDriver("Standard");
 		} else {
 			WebDriverUtil.getChromeDriver("Incognito");
 		}
@@ -140,8 +137,14 @@ public class TestBase {
 		return System.getenv("JENKINS_HOME") != null;
 	}
 
-	private static boolean isGridReady() {
-		return System.getProperty("grid.url") != null;
+	private static boolean isGridReady(String host, int port, int timeout) {
+		try (Socket socket = new Socket()) {
+			socket.connect(new InetSocketAddress(host, port), timeout);
+			return true;
+		} catch (IOException e) {
+			return false; // Either timeout or unreachable or failed DNS lookup.
+		}
 
 	}
+
 }
