@@ -21,14 +21,12 @@ public class WebDriverUtil extends TestBase {
 		logger.info("Launching Chrome Browser");
 		WebDriverManager.chromedriver().setup();
 		driver.set(new ChromeDriver(OptionsUtil.getChromeOption(option)));
-
 	}
 
 	public static void setFirefoxDriver(String option) {
 		logger.info("Launching Firefox Browser");
 		WebDriverManager.firefoxdriver().setup();
 		driver.set(new FirefoxDriver(OptionsUtil.getFirefoxOption(option)));
-
 	}
 
 	public static void setEdgeDriver(String option) {
@@ -39,21 +37,20 @@ public class WebDriverUtil extends TestBase {
 
 	public static void setRemoteChromeDriver(String option) throws MalformedURLException {
 		logger.info("Launching Remote Chrome Browser");
-		String hubURL = "http://192.168.2.25:8082/wd/hub";
+		String hubURL = "http://192.168.2.25:4444/wd/hub";
 		driver.set(new RemoteWebDriver(new URL(hubURL), OptionsUtil.getRemoteChromeOption(option)));
 	}
 
 	public static void setRemoteFirefoxDriver(String option) throws MalformedURLException {
 		logger.info("Launching Remote Firefox Browser");
-		String hubURL = "http://192.168.2.25:8082/wd/hub";
+		String hubURL = "http://192.168.2.25:4444/wd/hub";
 		driver.set(new RemoteWebDriver(new URL(hubURL), OptionsUtil.getRemoteFirefoxOption(option)));
 
 	}
 
 	public static void setRemoteEdgeDriver(String option) throws MalformedURLException {
 		logger.info("Launching Remote Edge Browser");
-		String hubURL = "http://192.168.2.25:8082/wd/hub";
+		String hubURL = "http://192.168.2.25:4444/wd/hub";
 		driver.set(new RemoteWebDriver(new URL(hubURL), OptionsUtil.getRemoteEdgeOption(option)));
-
 	}
 }

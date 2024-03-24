@@ -91,7 +91,7 @@ public class TestBase {
 
 	private static void setDefaultFirefoxDriver() throws MalformedURLException {
 
-		if (isRunningOnJenkins() && isGridReady("localhost", 8082, 15000)) {
+		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
 			WebDriverUtil.setRemoteFirefoxDriver("Standard");
 		} else {
 			WebDriverUtil.setFirefoxDriver("Headless");
@@ -99,7 +99,7 @@ public class TestBase {
 	}
 
 	private static void setDefaultEdgeDriver() throws MalformedURLException {
-		if (isRunningOnJenkins() && isGridReady("localhost", 8082, 15000)) {
+		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
 			WebDriverUtil.setRemoteEdgeDriver("Incognito");
 		} else {
 			WebDriverUtil.setEdgeDriver("Standard");
@@ -107,7 +107,7 @@ public class TestBase {
 	}
 
 	private static void setDefaultChromeDriver() throws MalformedURLException {
-		if (isRunningOnJenkins() && isGridReady("localhost", 8082, 20000)) {
+		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 20000)) {
 			WebDriverUtil.setRemoteChromeDriver("Standard");
 		} else {
 			WebDriverUtil.setChromeDriver("Incognito");
