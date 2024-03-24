@@ -12,34 +12,36 @@ import com.naveenautomation.pages.AddAddressPage;
 import com.naveenautomation.pages.AddressBookPage;
 import com.naveenautomation.pages.MyAccountPage;
 import com.naveenautomation.testbase.TestBase;
+import com.naveenautomation.utility.DataProviderUtils;
 
-public class AddressBookPageTest extends TestBase {AccountLoginPage page;
-MyAccountPage myAccountPage;
-AddressBookPage addressBookPage;
-AddAddressPage addAddressPage;
+public class AddressBookPageTest extends TestBase {
+	AccountLoginPage loginPage;
+	MyAccountPage accountPage;
+	AddressBookPage addressBookPage;
+	AddAddressPage addAddressPage;
 
-@BeforeMethod
-public void launchBrowser() throws MalformedURLException {
-	intialisation();
-	page = new AccountLoginPage();
+	@BeforeMethod
+	public void launchBrowser() throws MalformedURLException {
+		intialization();
+		loginPage = new AccountLoginPage();
+	}
+
+	@Test (dataProvider = "validAddressData", dataProviderClass = DataProviderUtils.class)
+	public void validateSubmitAddress(String username, String password, String firstName, String lastName, String city, String address, String postalCode, String country, String zone, String countryValue, String zoneValue
+) {
+		accountPage = loginPage.submitCorrectLoginInfo(username, password);
+		addressBookPage = accountPage.clickAddressBookBtn();
+		addAddressPage = addressBookPage.clickAddNewAddressBtn();
+		addressBookPage = addAddressPage.submitAddress(firstName, lastName, city, address, postalCode, country,
+				zone, countryValue, zoneValue);
+		String addressUpdateAlertText = addressBookPage.getAddressUpdateAlertText();
+		Assert.assertEquals(addressUpdateAlertText, "Your address has been successfully added");
+
+	}
+
+	@AfterMethod
+	public void closeBrowser() {
+		tearDown();
+	}
+
 }
-
-@Test
-public void validateUserCanAddNewAddress() {
-	myAccountPage = page.submitLogin("dean@gmail.com", "Password1");
-	addressBookPage = myAccountPage.clickSideNavMenuItem("Address Book");
-	addAddressPage = addressBookPage.clickNewAddressBtn();
-	addressBookPage = addAddressPage.SubmitAddress("Munna", "Thakur", "Dhinchak Pooja corp", "Khandala", "Mumbai",
-			"L6Z3Y6", "Canada", "Ontario");
-	String bannerText = addressBookPage.getBannerText();
-	Assert.assertEquals(bannerText, "Your address has been successfully added");
-}
-
-@AfterMethod
-public void closeBrowser() {
-	tearDown();
-}
-
-}
-
-

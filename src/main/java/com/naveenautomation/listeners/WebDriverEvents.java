@@ -145,13 +145,13 @@ public class WebDriverEvents extends TestBase implements WebDriverEventListener 
 
 	@Override
 	public void beforeGetText(WebElement element, WebDriver driver) {
-		logger.info("Getting text from element  : " + element.getText());
+		//logger.info("Getting text from element  : " + element.getText());
 
 	}
 
 	@Override
 	public void afterGetText(WebElement element, WebDriver driver, String text) {
-		logger.info("Geot text from element  : " + element.getText());
+		//logger.info("Got text from element  : " + element.getText());
 
 	}
 

@@ -5,28 +5,38 @@ import java.io.IOException;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderUtils {
-	@DataProvider(name = "LoginData")
-	private String[][] loginInfoProvider() throws IOException {
-		String filePath = "./LoginData.xlsx";
-		int rowCount = ExcelUtils.getRowCount(filePath, "Sheet1");// since row count is zero based and cell count starts
-																	// from 1, the length of rows and columns in 2D
-																	// array will be rowcount and columncount as row in
-																	// 2D array is actually 1 less than the number of
-																	// rows in actual sheet with header.
-		int colCount = ExcelUtils.getColumnCount(filePath, "Sheet1", rowCount);
-		String[][] loginData = new String[rowCount][colCount];// empty 2 dimensional array will be initialized here
+
+	@DataProvider(name = "validAddressData")
+	private String[][] validAddressDataProvider() throws IOException {
+		String filePath = "./src/main/java/resources/AccountUpdateInfo.xlsx";
+	//	ExcelUtils.getFile(filePath);
+		int rowCount = ExcelUtils.getRowCount(filePath, "address");
+		int colCount = ExcelUtils.getColumnCount(filePath, "address", rowCount);
+		String[][] userAccountData = new String[rowCount][colCount];
 		for (int i = 1; i <= rowCount; i++) {
 			for (int j = 0; j < colCount; j++) {
-				loginData[i - 1][j] = ExcelUtils.getCellValue(filePath, "Sheet1", i, j); // populating the 2D array.
-																							// Here we need to store
-																							// data in 2D array where
-																							// corresponding rows of 2D
-																							// array will always be 1
-																							// less than the row in
-																							// actual file, hence this
-																							// logic.
+				userAccountData[i - 1][j] = ExcelUtils.getCellValue(filePath, "address", i, j);
 			}
 		}
-		return loginData;}	
+		ExcelUtils.closeWorkbook(filePath);
+		return userAccountData;
+	}
+	
+	@DataProvider(name = "validLoginData")
+	private String[][] loginInfoProvider() throws IOException {
+		String filePath = "./src/main/java/resources/LoginDetails.xlsx";
+	//	ExcelUtils.getFile(filePath);
+		int rowCount = ExcelUtils.getRowCount(filePath, "validDetails");
+		int colCount = ExcelUtils.getColumnCount(filePath, "validDetails", rowCount);
+		String[][] loginData = new String[rowCount][colCount];
+		for (int i = 1; i <= rowCount; i++) {
+			for (int j = 0; j < colCount; j++) {
+				loginData[i - 1][j] = ExcelUtils.getCellValue(filePath, "validDetails", i, j);
+			}
+		}
+		ExcelUtils.closeWorkbook(filePath);
+		return loginData;
+	}
+
 	
 }

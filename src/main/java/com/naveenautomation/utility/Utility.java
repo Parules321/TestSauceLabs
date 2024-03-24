@@ -10,6 +10,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import com.naveenautomation.testbase.TestBase;
 
@@ -22,7 +24,7 @@ public class Utility extends TestBase {
 		// Save the screen shot in a file using TakesScreenshot interface
 		// casts the driver object to the TakesScreenshot interface which allows 
 		//the WebDriver instance to capture a screenshot of the current window.
-		File screenShotFile = ((TakesScreenshot) defaultWebDriver).getScreenshotAs(OutputType.FILE);
+		File screenShotFile = ((TakesScreenshot) getDriverCopy()).getScreenshotAs(OutputType.FILE);
 
 		// Save the screenshot in root directory ./. make sure to include time stamp, extension for the file type, folder name
 		try {
@@ -34,10 +36,20 @@ public class Utility extends TestBase {
 		}
 
 	}
+	
+	public static void selectElement(WebElement element, String text, String value) {
+		Select sc = new Select(element);
+
+		try {
+			sc.selectByVisibleText(text);
+		} catch (Exception e) {
+			sc.selectByValue(value);
+		}
+	}
 
 	public static String generateRandomEmail() {
 		String email = RandomStringUtils.randomNumeric(3);
-		String emailID = "Manvir" + email + "@gmail.com";
+		String emailID = "Paula" + email + "@gmail.com";
 		return emailID;
 	}
 

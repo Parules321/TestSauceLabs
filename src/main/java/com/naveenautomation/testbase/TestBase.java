@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
 import java.net.Socket;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
@@ -20,12 +19,10 @@ import com.naveenautomation.listeners.WebDriverEvents;
 import com.naveenautomation.utility.WebDriverUtil;
 
 public class TestBase {
-	public static WebDriver defaultWebDriver;
 	private static String defaultBrowser;
 	private static String defaultEnv;
 	public static Logger logger;
-	private WebDriverEvents events;
-	private EventFiringWebDriver eDriver;
+	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
 	@BeforeClass
 	public void setUpLogger() {
@@ -35,48 +32,42 @@ public class TestBase {
 		logger.setLevel(Level.ALL);
 	}
 
-	public void intialisation() throws MalformedURLException {
+	public void intialization() throws MalformedURLException {
 		setDriver();
 		driverManagement();
 		logger.info("Loading Page in Browser");
-		defaultWebDriver.get(getDefaultEnv());
+		getDriverCopy().get(getDefaultEnv());
 	}
 
 	private void driverManagement() {
-		defaultWebDriver.manage().window().maximize();
-		defaultWebDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		getDriverCopy().manage().window().maximize();
+		// defaultWebDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	}
 
 	private void setDriver() throws MalformedURLException {
 
 		switch (getDefaultBrowser()) {
 		case "chrome":
-			defaultWebDriver = getDefaultChromeDriver();
+			setDefaultChromeDriver();
 			break;
 		case "firefox":
-			defaultWebDriver = getDefaultFirefoxDriver();
+			setDefaultFirefoxDriver();
 			break;
 		case "MicrosoftEdge":
-			defaultWebDriver = getDefaultEdgeDriver();
+			setDefaultEdgeDriver();
 			break;
 
 		default:
 			throw new IllegalArgumentException();
 		}
-
-		// Intialising Event Firing Webdriver
-		eDriver = new EventFiringWebDriver(defaultWebDriver);
-
-		// Intialising Webdriver Events
-		events = new WebDriverEvents();
-
-		// Register the event
-		eDriver.register(events);
-		defaultWebDriver = eDriver;
 	}
 
 	public void tearDown() {
-		defaultWebDriver.close();
+		getDriverCopy().close();
+	}
+
+	public static WebDriver getDriverCopy() {
+		return driver.get();
 	}
 
 	private static String getDefaultBrowser() {
@@ -98,53 +89,45 @@ public class TestBase {
 		return defaultEnv;
 	}
 
-	private static WebDriver getDefaultFirefoxDriver() throws MalformedURLException {
+	private static void setDefaultFirefoxDriver() throws MalformedURLException {
 
 		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
-			WebDriverUtil.getRemoteFirefoxDriver("Standard");
-		}
-
-		else {
-			WebDriverUtil.getFirefoxDriver("Headless");
-		}
-
-		return defaultWebDriver;
-	}
-
-	private static WebDriver getDefaultEdgeDriver() throws MalformedURLException {
-		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
-			WebDriverUtil.getRemoteEdgeDriver("Incognito");
-		}
-
-		else {
-			WebDriverUtil.getEdgeDriver("Standard");
-		}
-
-		return defaultWebDriver;
-	}
-
-	private static WebDriver getDefaultChromeDriver() throws MalformedURLException {
-		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
-			WebDriverUtil.getRemoteChromeDriver("Standard");
+			WebDriverUtil.setRemoteFirefoxDriver("Standard");
 		} else {
-			WebDriverUtil.getChromeDriver("Incognito");
+			WebDriverUtil.setFirefoxDriver("Headless");
 		}
-		return defaultWebDriver;
+	}
+
+	private static void setDefaultEdgeDriver() throws MalformedURLException {
+		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
+			WebDriverUtil.setRemoteEdgeDriver("Incognito");
+		} else {
+			WebDriverUtil.setEdgeDriver("Standard");
+		}
+	}
+
+	private static void setDefaultChromeDriver() throws MalformedURLException {
+		if (isRunningOnJenkins() && isGridReady("localhost", 8082, 20000)) {
+			WebDriverUtil.setRemoteChromeDriver("Standard");
+		} else {
+			WebDriverUtil.setChromeDriver("Incognito");
+		}
 	}
 
 	private static boolean isRunningOnJenkins() {
 		// Check if Jenkins-specific environment variable is set
+
 		return System.getenv("JENKINS_HOME") != null;
 	}
 
 	private static boolean isGridReady(String host, int port, int timeout) {
-		try (Socket socket = new Socket()) {
+		Socket socket = new Socket();
+		try {
 			socket.connect(new InetSocketAddress(host, port), timeout);
 			return true;
 		} catch (IOException e) {
-			return false; // Either timeout or unreachable or failed DNS lookup.
+			return false;
 		}
-
 	}
 
 }

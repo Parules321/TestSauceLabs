@@ -16,6 +16,8 @@ public class ExcelUtils {
 
 	// Represent the Whole excel sheet
 	public static XSSFWorkbook wb;
+	
+	public static XSSFWorkbook wbCopy;
 
 	// Represent the Individual sheet
 	public static XSSFSheet ws;
@@ -25,69 +27,46 @@ public class ExcelUtils {
 
 	// Represent the cells of the sheet
 	public static XSSFCell cell;
+	
+	 private static ThreadLocal<XSSFWorkbook> workBook = new ThreadLocal<>();
 
+	    public static XSSFWorkbook getWorkbook(String filePath) throws IOException {
+	        wb = workBook.get();
+	        if (wb == null) {
+	           FileInputStream is = new FileInputStream(filePath);
+	                wb= new XSSFWorkbook(is);
+	                workBook.set(wb);
+	            }
+	        return wb;
+	    }
+
+	    public static void closeWorkbook(String filePath) throws IOException {      
+	         getWorkbook(filePath).close();        
+	        }
+	
 	public static int getRowCount(String xFile, String sheetName) throws IOException {
 		int lastRowNo = 0;
-		// Fetch the file
-		fi = new FileInputStream(xFile);
-		// Initialize the Work Book
-		wb = new XSSFWorkbook(fi);
-		// Get the sheet from Work book
-		ws = wb.getSheet(sheetName);
-		// Get the last row.
+		ws = getWorkbook(xFile).getSheet(sheetName);
 		lastRowNo = ws.getLastRowNum();
-
-		wb.close();
-		fi.close();
 		return lastRowNo;
 	}
+
 	public static int getColumnCount(String xFile, String sheetName, int lastRowNo) throws IOException {
-
 		int lastColCount = 0;
-		// Fetch the file
-		fi = new FileInputStream(xFile);
-		// Initialize the Work Book
-		wb = new XSSFWorkbook(fi);
-		// Get the last row.
-		ws = wb.getSheet(sheetName);
-
+		ws = getWorkbook(xFile).getSheet(sheetName);
 		row = ws.getRow(lastRowNo);
 		lastColCount = row.getLastCellNum();
-		wb.close();
-		fi.close();
 		return lastColCount;
 	}
 
 	public static String getCellValue(String xFile, String sheetName, int rowNo, int colCount) throws IOException {
 		String data = "";
-		fi = new FileInputStream(xFile);
-		wb = new XSSFWorkbook(fi);
-		ws = wb.getSheet(sheetName);
+		ws = getWorkbook(xFile).getSheet(sheetName);
 		row = ws.getRow(rowNo);
 		cell = row.getCell(colCount);
 		data = new DataFormatter().formatCellValue(cell); // returns the cell value formatted as string
+		getWorkbook(xFile).close();
 		return data;
-	}
-	// self practice
-	public static String[][] getEachCellValue(String xFile, String sheetName) throws IOException {
-		// String data = "";
-		fi = new FileInputStream(xFile);
-		wb = new XSSFWorkbook(fi);
-		ws = wb.getSheet(sheetName);
-		int rowNo = ws.getLastRowNum();
-		row = ws.getRow(rowNo);
-		int colCount = row.getLastCellNum();
-		String[][] data = new String[rowNo + 1][colCount];
-		for (int i = 1; i <rowNo+1; i++) {
-			for (int j = 0; j < colCount; j++) {
-				XSSFRow currentRow = ws.getRow(i);
-				XSSFCell cell = currentRow.getCell(j);
-				data[i][j] = new DataFormatter().formatCellValue(cell);
-				System.out.println(data[i][j]);
-			}
-		}
-		return data;
-
 	}
 
 }

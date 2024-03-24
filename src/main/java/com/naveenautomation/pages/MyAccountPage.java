@@ -5,46 +5,52 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.naveenautomation.testbase.TestBase;
+import com.naveenautomation.utility.ExplicitWaitUtil;
 
 public class MyAccountPage extends TestBase {
 	public MyAccountPage() {
-		PageFactory.initElements(defaultWebDriver, this);
+		PageFactory.initElements(getDriverCopy(), this);
 	}
 
-	@FindBy(css = "#content>ul:nth-of-type(1) li:nth-of-type(2) a")
-	WebElement changePwdBtn;
+	@FindBy(css = ".list-group a")
+	private List<WebElement> sideNavMenuList;
 
-	@FindBy(css = "div.alert")
-	WebElement successBanner;
+	@FindBy(xpath = "//h2[text()='My Account']")
+	private WebElement myAccountBannerTxt;
 
-	@FindBy(css = "#account-account>div.row h2:first-of-type")
-	WebElement myAccountText;
+	@FindBy(css = "span.caret")
+	private WebElement myAccountDropDwnBtn;
 
-	@FindBy(css = "#column-right a")
-	List<WebElement> sideNavWebelementList;
-
-	public ChangePwdPage clickChangePasswordBtn() {
-		changePwdBtn.click();
-		return new ChangePwdPage();
-	}
-
-	public String getPasswordUpdateAlertText() {
-		return successBanner.getText();
-	}
+	@FindBy(css = "ul.dropdown-menu-right li:last-of-type")
+	private WebElement myAccountLogOutBtn;
 
 	public String getMyAccountText() {
-		return myAccountText.getText();
+		return ExplicitWaitUtil.getText(myAccountBannerTxt);
 	}
 
-	public AddressBookPage clickSideNavMenuItem(String item) {
-		for (int i = 0; i < sideNavWebelementList.size(); i++) {
-			if (sideNavWebelementList.get(i).getText().equalsIgnoreCase(item)) {
-				sideNavWebelementList.get(i).click();
-				break;
-			}
-		}
+	public AddressBookPage clickAddressBookBtn() {
+		ExplicitWaitUtil.clickOnElementFromWebElementsList(sideNavMenuList, "Address Book");
 		return new AddressBookPage();
 	}
+
+	private void getMyAccountDropDownMenu() {
+		ExplicitWaitUtil.clickOnElement(myAccountDropDwnBtn);
+	}
+
+	private void clickMyAcctLogOutBtn() {
+		ExplicitWaitUtil.clickOnElement(myAccountLogOutBtn);
+	}
+
+	public AccountLogoutPage clickSideNavLogOutBtn() {
+		ExplicitWaitUtil.clickOnElementFromWebElementsList(sideNavMenuList, "Logout");
+		return new AccountLogoutPage();
+	}
+
+	public AccountLogoutPage clickMyAccountLogOutBtn() {
+		getMyAccountDropDownMenu();
+		clickMyAcctLogOutBtn();
+		return new AccountLogoutPage();
+	}
+
 }

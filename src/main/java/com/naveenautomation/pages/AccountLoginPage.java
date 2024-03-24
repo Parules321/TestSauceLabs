@@ -5,38 +5,42 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.naveenautomation.testbase.TestBase;
+import com.naveenautomation.utility.ExplicitWaitUtil;
 
 public class AccountLoginPage extends TestBase {
 	public AccountLoginPage() {
-		PageFactory.initElements(defaultWebDriver, this);
+		PageFactory.initElements(getDriverCopy(), this);
 	}
 
 	@FindBy(id = "input-email")
-	WebElement loginInput;
+	private WebElement loginInput;
 
 	@FindBy(id = "input-password")
-	WebElement pwdInput;
+	private WebElement pwdInput;
 
 	@FindBy(css = "#content div>div form>input")
-	WebElement loginBtn;
+	private WebElement loginBtn;
+
+	@FindBy(css = "#account-login li:nth-of-type(3) a")
+	private WebElement loginText;
 
 	private void enterEmail(String email) {
-		loginInput.sendKeys(email);
+		ExplicitWaitUtil.sendText(loginInput, email);
 	}
 
 	private void enterPwd(String pwd) {
-		pwdInput.sendKeys(pwd);
+		ExplicitWaitUtil.sendText(pwdInput, pwd);
 	}
 
-	private void clickLogin() {
-		loginBtn.click();
+	private void clickLoginBtn() {
+		ExplicitWaitUtil.clickOnElement(loginBtn);
 	}
 
-	public MyAccountPage submitLogin(String email, String pwd) {
+	public MyAccountPage submitCorrectLoginInfo(String email, String pwd) {
 		enterEmail(email);
 		enterPwd(pwd);
-		clickLogin();
+		clickLoginBtn();
 		return new MyAccountPage();
 	}
 
-}
+	}

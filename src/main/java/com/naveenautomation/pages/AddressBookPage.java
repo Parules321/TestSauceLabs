@@ -6,25 +6,27 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.naveenautomation.testbase.TestBase;
+import com.naveenautomation.utility.ExplicitWaitUtil;
 
 public class AddressBookPage extends TestBase {
 	public AddressBookPage() {
-		PageFactory.initElements(defaultWebDriver, this);
+		PageFactory.initElements(getDriverCopy(), this);
 	}
 
-	@FindBy(css = "div.buttons.clearfix div:last-of-type a")
-	WebElement newAddressBtn;
+	@FindBy(css = ".btn-primary")
+	private WebElement addNewAddressBtn;
 
 	@FindBy(css = "div.alert")
-	WebElement alertBannerText;
+	WebElement addressUpdateAlertText;
 
-	public AddAddressPage clickNewAddressBtn() {
-		newAddressBtn.click();
+	public AddAddressPage clickAddNewAddressBtn() {
+		ExplicitWaitUtil.clickOnElement(addNewAddressBtn);
 		return new AddAddressPage();
 	}
 
-	public String getBannerText() {
-		return alertBannerText.getText();
+	public String getAddressUpdateAlertText() {
+		return ExplicitWaitUtil.getText(addressUpdateAlertText);
 	}
+
 
 }

@@ -1,98 +1,89 @@
 package com.naveenautomation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import com.naveenautomation.testbase.TestBase;
+import com.naveenautomation.utility.ExplicitWaitUtil;
+import com.naveenautomation.utility.Utility;
 
 public class AddAddressPage extends TestBase {
 	public AddAddressPage() {
-		PageFactory.initElements(defaultWebDriver, this);
+		PageFactory.initElements(getDriverCopy(), this);
 	}
 
 	@FindBy(id = "input-firstname")
-	WebElement firstName;
+	WebElement firstNameInputBox;
 
 	@FindBy(id = "input-lastname")
-	WebElement lastName;
-
-	@FindBy(id = "input-company")
-	WebElement companyName;
+	WebElement lastNameInputBox;
 
 	@FindBy(id = "input-address-1")
-	WebElement addressOne;
+	WebElement addressInputBox;
 
 	@FindBy(id = "input-city")
-	WebElement city;
+	WebElement cityInputBox;
 
 	@FindBy(id = "input-postcode")
-	WebElement postCode;
+	WebElement postCodeInputBox;
 
 	@FindBy(id = "input-country")
-	WebElement country;
+	WebElement countryInputBox;
 
 	@FindBy(id = "input-zone")
-	WebElement zone;
+	WebElement regionInputBox;
 
-	@FindBy(css = "div.buttons.clearfix input")
+	@FindBy(css = ".btn-primary")
 	WebElement continueBtn;
 
-	private void enterFirstName(String name) {
-		firstName.sendKeys(name);
+	@FindBy(css = "div.text-danger")
+	WebElement incompleteAddressAlertText;
+
+	private void enterFirstName(String firstName) {
+		ExplicitWaitUtil.sendText(firstNameInputBox, firstName);
 	}
 
-	private void enterLastName(String name) {
-		lastName.sendKeys(name);
+	private void enterLastName(String lastName) {
+		ExplicitWaitUtil.sendText(lastNameInputBox, lastName);
 	}
 
-	private void enterCompany(String name) {
-		companyName.sendKeys(name);
+	private void enterAddress(String address) {
+		ExplicitWaitUtil.sendText(addressInputBox, address);
 	}
 
-	private void enterAddressOne(String name) {
-		addressOne.sendKeys(name);
+	private void enterCity(String city) {
+		ExplicitWaitUtil.sendText(cityInputBox, city);
 	}
 
-	private void enterCity(String name) {
-		city.sendKeys(name);
+	private void enterPostCode(String postCode) {
+		ExplicitWaitUtil.sendText(postCodeInputBox, postCode);
 	}
 
-	private void enterPostCode(String name) {
-		postCode.sendKeys(name);
+	private void selectCountry(String country, String value) {
+		Utility.selectElement(countryInputBox, country, value);
 	}
 
-	private void selectCountry(String name) {
-		selectElement(country, name);
+	private void enterRegion(String country, String region, String value) {
+		ExplicitWaitUtil.selectOptionFromDynamicDropdown(countryInputBox, country, regionInputBox,
+				By.xpath("//select//option[text()='Ontario']"), region, value);
 	}
 
-	private void enterZone(String name) {
-		selectElement(zone, name);
+	private void clickContinueBtn() {
+		ExplicitWaitUtil.clickOnElement(continueBtn);
 	}
 
-	public AddressBookPage SubmitAddress(String name, String lastName, String company, String city, String address,
-			String postalCode, String country, String zone) {
-		enterFirstName(name);
+	public AddressBookPage submitAddress(String firstName, String lastName, String city, String address,
+			String postalCode, String country, String zone, String countryValue, String zoneValue) {
+		enterFirstName(firstName);
 		enterLastName(lastName);
-		enterCompany(company);
 		enterCity(city);
-		enterAddressOne(address);
+		enterAddress(address);
 		enterPostCode(postalCode);
-		selectCountry(country);
-		enterZone(zone);
-		continueBtn.click();
+		selectCountry(country, countryValue);
+		enterRegion(country, zone, zoneValue);
+		clickContinueBtn();
 		return new AddressBookPage();
 	}
-
-	private void selectElement(WebElement element, String text) {
-		Select sc = new Select(element);
-
-		try {
-			sc.selectByVisibleText(text);
-		} catch (Exception e) {
-			sc.selectByValue(text);
-		}
-	}
-
 }
