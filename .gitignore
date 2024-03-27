@@ -1,0 +1,9 @@
+/target/
+/Reports/
+/FailedScreenShot/
+/Logs/
+/target/
+/test-output/
+.classpath
+.project
+.settings/
