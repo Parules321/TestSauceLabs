@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /target/
+=======
+>>>>>>> b43e28f3507bee8d8c7de0d7421937c41329b061
 /Reports/
 /FailedScreenShot/
 /Logs/
@@ -6,4 +9,8 @@
 /test-output/
 .classpath
 .project
+<<<<<<< HEAD
 .settings/
+=======
+.settings/
+>>>>>>> b43e28f3507bee8d8c7de0d7421937c41329b061
