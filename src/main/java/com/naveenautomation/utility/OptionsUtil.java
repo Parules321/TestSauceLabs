@@ -14,7 +14,8 @@ public class OptionsUtil {
 			options = new ChromeOptions();
 		} else if (option.equals("Headless")) {
 			options = new ChromeOptions();
-			options.setHeadless(true);
+			//options.setHeadless(true); sel 3
+			options.addArguments("--headless");
 		} else if (option.equals("Incognito")) {
 			options = new ChromeOptions();
 			options.addArguments("--incognito");
@@ -28,7 +29,7 @@ public class OptionsUtil {
 			options = new FirefoxOptions();
 		} else if (option.equals("Headless")) {
 			options = new FirefoxOptions();
-			options.setHeadless(true);
+			options.addArguments("--headless");
 		} else if (option.equals("Incognito")) {
 			options = new FirefoxOptions();
 			options.addArguments("--incognito");
@@ -43,6 +44,7 @@ public class OptionsUtil {
 		} else if (option.equals("Incognito")) {
 			options = new EdgeOptions();
 			options.setCapability("ms:inPrivate", true);
+			
 		}
 		return options;
 	}
@@ -50,51 +52,57 @@ public class OptionsUtil {
 	public static ChromeOptions getRemoteChromeOption(String option) {
 		ChromeOptions options = null;
 		if (option.equals("Standard")) {
-			DesiredCapabilities capability = new DesiredCapabilities();
+			//DesiredCapabilities capability = new DesiredCapabilities();
 			options = new ChromeOptions();
-			capability.setBrowserName("chrome");
-			capability.setPlatform(Platform.WINDOWS);
-			options.merge(capability);
+			options.setCapability("Platform", Platform.WIN10);
+			//capability.setBrowserName("chrome");
+			//capability.setPlatform(Platform.WINDOWS);
+			//options.merge(capability);
 		} else if (option.equals("Headless")) {
 			options = new ChromeOptions();
-			options.setHeadless(true);
-			DesiredCapabilities capability = new DesiredCapabilities();
-			capability.setBrowserName("chrome");
-			capability.setPlatform(Platform.WINDOWS);
-			options.merge(capability);
+			options.addArguments("headless");
+			options.setCapability("Platform", Platform.WIN10);
+//			DesiredCapabilities capability = new DesiredCapabilities();
+//			capability.setBrowserName("chrome");
+//			capability.setPlatform(Platform.WINDOWS);
+//			options.merge(capability);
 		} else if (option.equals("Incognito")) {
 			options = new ChromeOptions();
 			options.addArguments("--incognito");
-			DesiredCapabilities capability = new DesiredCapabilities();
-			capability.setBrowserName("chrome");
-			capability.setPlatform(Platform.WINDOWS);
-			options.merge(capability);
+			options.setCapability("Platform", Platform.WIN10);
+//			DesiredCapabilities capability = new DesiredCapabilities();
+//			capability.setBrowserName("chrome");
+//			capability.setPlatform(Platform.WINDOWS);
+//			options.merge(capability);
 		}
 		return options;
 	}
 
 	public static FirefoxOptions getRemoteFirefoxOption(String option) {
 		FirefoxOptions options = null;
-		if (option.equals("Standard")) {
-			DesiredCapabilities capability = new DesiredCapabilities();
+		if (option.equals("Standard")) {	
 			options = new FirefoxOptions();
-			capability.setBrowserName("firefox");
-			capability.setPlatform(Platform.WINDOWS);
-			options.merge(capability);
+			options.setCapability("Platform", Platform.WIN10);
+//			DesiredCapabilities capability = new DesiredCapabilities();
+//			capability.setBrowserName("firefox");
+//			capability.setPlatform(Platform.WINDOWS);
+//			options.merge(capability);
 		} else if (option.equals("Headless")) {
 			options = new FirefoxOptions();
-			options.setHeadless(true);
-			DesiredCapabilities capability = new DesiredCapabilities();
-			capability.setBrowserName("firefox");
-			capability.setPlatform(Platform.WINDOWS);
-			options.merge(capability);
+			options.addArguments("--headless");
+			options.setCapability("Platform", Platform.WIN10);
+//			DesiredCapabilities capability = new DesiredCapabilities();
+//			capability.setBrowserName("firefox");
+//			capability.setPlatform(Platform.WINDOWS);
+//			options.merge(capability);
 		} else if (option.equals("Incognito")) {
 			options = new FirefoxOptions();
 			options.addArguments("--incognito");
-			DesiredCapabilities capability = new DesiredCapabilities();
-			capability.setBrowserName("firefox");
-			capability.setPlatform(Platform.WINDOWS);
-			options.merge(capability);
+			options.setCapability("Platform", Platform.WIN10);
+//			DesiredCapabilities capability = new DesiredCapabilities();
+//			capability.setBrowserName("firefox");
+//			capability.setPlatform(Platform.WINDOWS);
+//			options.merge(capability);
 		}
 		return options;
 	}
@@ -102,18 +110,20 @@ public class OptionsUtil {
 	public static EdgeOptions getRemoteEdgeOption(String option) {
 		EdgeOptions options = null;
 		if (option.equals("Standard")) {
-			DesiredCapabilities capability = new DesiredCapabilities();
 			options = new EdgeOptions();
-			capability.setBrowserName("MicrosoftEdge");
-			capability.setPlatform(Platform.WINDOWS);
-			options.merge(capability);
+			options.setCapability("Platform", Platform.WIN10);
+//			DesiredCapabilities capability = new DesiredCapabilities();
+//			capability.setBrowserName("MicrosoftEdge");
+//			capability.setPlatform(Platform.WINDOWS);
+//			options.merge(capability);
 		} else if (option.equals("Incognito")) {
 			options = new EdgeOptions();
+			options.setCapability("Platform", Platform.WIN10);
 			options.setCapability("ms:inPrivate", true);
-			DesiredCapabilities capability = new DesiredCapabilities();
-			capability.setBrowserName("MicrosoftEdge");
-			capability.setPlatform(Platform.WINDOWS);
-			options.merge(capability);
+//			DesiredCapabilities capability = new DesiredCapabilities();
+//			capability.setBrowserName("MicrosoftEdge");
+//			capability.setPlatform(Platform.WINDOWS);
+//			options.merge(capability);
 		}
 		return options;
 	}

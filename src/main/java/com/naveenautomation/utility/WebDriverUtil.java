@@ -13,25 +13,25 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import com.naveenautomation.listeners.WebDriverEvents;
 import com.naveenautomation.testbase.TestBase;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class WebDriverUtil extends TestBase {
 
 	public static void setChromeDriver(String option) {
 		logger.info("Launching Chrome Browser");
-		WebDriverManager.chromedriver().setup();
+		//WebDriverManager.chromedriver().setup();
 		driver.set(new ChromeDriver(OptionsUtil.getChromeOption(option)));
 	}
 
 	public static void setFirefoxDriver(String option) {
 		logger.info("Launching Firefox Browser");
-		WebDriverManager.firefoxdriver().setup();
+		//WebDriverManager.firefoxdriver().setup();
 		driver.set(new FirefoxDriver(OptionsUtil.getFirefoxOption(option)));
 	}
 
 	public static void setEdgeDriver(String option) {
 		logger.info("Launching Edge Browser");
-		WebDriverManager.edgedriver().setup();
+		//WebDriverManager.edgedriver().setup();
 		driver.set(new EdgeDriver(OptionsUtil.getEdgeOption(option)));
 	}
 

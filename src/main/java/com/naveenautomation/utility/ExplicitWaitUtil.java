@@ -1,5 +1,6 @@
 package com.naveenautomation.utility;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.Alert;
@@ -13,10 +14,12 @@ import com.naveenautomation.testbase.TestBase;
 
 public class ExplicitWaitUtil extends TestBase {
 
-	private static int defaultTimeout = 20;
+	//private static int defaultTimeout = 20;
+	private static boolean found = false;
 
 	public static WebElement waitForElementToBeClickable(WebElement element) {
-		return new WebDriverWait(getDriverCopy(), defaultTimeout).until(ExpectedConditions.elementToBeClickable(element));
+		return new WebDriverWait(getDriverCopy(), Duration.ofSeconds(20))
+				.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
 	public static void clickOnElement(WebElement element) {
@@ -32,7 +35,7 @@ public class ExplicitWaitUtil extends TestBase {
 	}
 
 	public static WebElement waitForVisibilityOfElement(WebElement element) {
-		return new WebDriverWait(getDriverCopy(), defaultTimeout).until(ExpectedConditions.visibilityOf(element));
+		return new WebDriverWait(getDriverCopy(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public static void sendText(WebElement element, String text) {
@@ -46,6 +49,10 @@ public class ExplicitWaitUtil extends TestBase {
 	public static void moveToElement(WebElement element) {
 		Actions action = new Actions(getDriverCopy());
 		action.moveToElement(waitForVisibilityOfElement(element)).perform();
+		//waitForVisibilityOfElement(element).getRect().getX();
+		//action.moveToElement(waitForVisibilityOfElement(element)).click().perform(); - selenium 3
+		//action.click(waitForVisibilityOfElement(element)); - selenium 4
+		
 	}
 
 	public static void clickOnElementFromWebElementsList(List<WebElement> elements, String elementText) {
@@ -55,11 +62,19 @@ public class ExplicitWaitUtil extends TestBase {
 				clickOnElement(element);
 				break;
 			}
-		}
+	}
+//		elements.forEach(element -> {
+//			if (getText(element).equals(elementText)) {
+//				clickOnElement(element);
+//				found = true;
+//			}
+//		});
+
 	}
 
 	public static WebElement waitForVisibilityOfElement(By locator) {
-		return new WebDriverWait(getDriverCopy(), defaultTimeout).until(ExpectedConditions.visibilityOfElementLocated(locator));
+		return new WebDriverWait(getDriverCopy(), Duration.ofSeconds(20))
+				.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	public static void clickElementFromWebTable(List<WebElement> rowList, List<WebElement> columnList, By locator,
@@ -76,7 +91,7 @@ public class ExplicitWaitUtil extends TestBase {
 	}
 
 	public static Alert waitforAlertToBePresent() {
-		return new WebDriverWait(getDriverCopy(), defaultTimeout).until(ExpectedConditions.alertIsPresent());
+		return new WebDriverWait(getDriverCopy(), Duration.ofSeconds(20)).until(ExpectedConditions.alertIsPresent());
 	}
 
 	public void acceptAlert() {
@@ -92,12 +107,12 @@ public class ExplicitWaitUtil extends TestBase {
 	}
 
 	public static boolean waitForTextToBePresent(WebElement element, String text) {
-		return new WebDriverWait(getDriverCopy(), defaultTimeout)
+		return new WebDriverWait(getDriverCopy(), Duration.ofSeconds(20))
 				.until(ExpectedConditions.textToBePresentInElement(element, text));
 	}
 
 	public static WebElement waitForNestedElementToBePresent(WebElement element, By nestedElementLocator) {
-		return new WebDriverWait(getDriverCopy(), defaultTimeout)
+		return new WebDriverWait(getDriverCopy(), Duration.ofSeconds(20))
 				.until(ExpectedConditions.presenceOfNestedElementLocatedBy(element, nestedElementLocator));
 	}
 
@@ -111,7 +126,8 @@ public class ExplicitWaitUtil extends TestBase {
 	}
 
 	public static boolean waitForInputFieldToBeEmpty(WebElement element) {
-		return new WebDriverWait(getDriverCopy(), defaultTimeout).until(defaultWebDriver -> element.getText().isEmpty());
+		return new WebDriverWait(getDriverCopy(), Duration.ofSeconds(20))
+				.until(defaultWebDriver -> element.getText().isEmpty());
 	}
 
 	public static void sendKeysWhenEmpty(WebElement element, String text) {

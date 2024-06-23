@@ -9,7 +9,7 @@
 		<listener
 			class-name="com.naveenautomation.listeners.ExtentReportListener" />
 	</listeners>
-	<test thread-count="3" name="Test">
+	<test name="Test">
 		<classes>
 			<class name="com.naveenautomation.tests.AccountLogoutPageTest" />
 			<class name="com.naveenautomation.tests.AddressBookPageTest" />

@@ -1,157 +1,181 @@
 package com.naveenautomation.listeners;
 
+import java.lang.reflect.Method;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.events.WebDriverEventListener;
+import org.openqa.selenium.support.events.WebDriverListener;
 
 import com.naveenautomation.testbase.TestBase;
 
-public class WebDriverEvents extends TestBase implements WebDriverEventListener {
+public class WebDriverEvents extends TestBase implements WebDriverListener {
 
-	@Override
 	public void beforeAlertAccept(WebDriver driver) {
 
 	}
 
-	@Override
 	public void afterAlertAccept(WebDriver driver) {
 
 	}
 
-	@Override
 	public void afterAlertDismiss(WebDriver driver) {
 
 	}
 
-	@Override
 	public void beforeAlertDismiss(WebDriver driver) {
 
 	}
 
-	@Override
 	public void beforeNavigateTo(String url, WebDriver driver) {
 		logger.info("Navigating to URL : " + url);
 
 	}
 
-	@Override
+	// correct one
+	public void beforeTo(WebDriver.Navigation navigation, String url) {
+	}
+
+	// correct one
+	public void afterTo(WebDriver.Navigation navigation, String url) {
+	}
+
+	// correct one
+	public void beforeGet(WebDriver driver, String url) {
+	}
+
 	public void afterNavigateTo(String url, WebDriver driver) {
 		logger.info("Navigated to URL : " + url);
 
 	}
 
-	@Override
 	public void beforeNavigateBack(WebDriver driver) {
 
 	}
 
-	@Override
 	public void afterNavigateBack(WebDriver driver) {
 
 	}
 
-	@Override
 	public void beforeNavigateForward(WebDriver driver) {
 
 	}
 
-	@Override
 	public void afterNavigateForward(WebDriver driver) {
 
 	}
 
-	@Override
 	public void beforeNavigateRefresh(WebDriver driver) {
 
 	}
 
-	@Override
 	public void afterNavigateRefresh(WebDriver driver) {
 
 	}
 
-	@Override
 	public void beforeFindBy(By by, WebElement element, WebDriver driver) {
 		logger.info("Finding element by : " + by);
 
 	}
 
-	@Override
+	// correct
+	public void beforeFindElement(WebDriver driver, By locator) {
+	}
+
 	public void afterFindBy(By by, WebElement element, WebDriver driver) {
 		logger.info("Found element by : " + by);
 
 	}
 
-	@Override
+	// correct
+	public void afterFindElement(WebDriver driver, By locator, WebElement result) {
+	}
+
 	public void beforeClickOn(WebElement element, WebDriver driver) {
 		logger.info("Clicking on element by : " + element);
 
 	}
 
-	@Override
+	// correct
+	public void beforeClick(WebElement element) {
+	};
+
+	// correct
+	public void afterClick(WebElement element) {
+	};
+
 	public void afterClickOn(WebElement element, WebDriver driver) {
 
 	}
 
-	@Override
 	public void beforeChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
 
 	}
 
-	@Override
 	public void afterChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
 
 	}
 
-	@Override
 	public void beforeScript(String script, WebDriver driver) {
 
 	}
 
-	@Override
 	public void afterScript(String script, WebDriver driver) {
 
 	}
 
-	@Override
 	public void beforeSwitchToWindow(String windowName, WebDriver driver) {
 		logger.info("Switching to Window  : " + windowName);
 
 	}
 
-	@Override
+	// correct
+	public void beforeAnyWindowCall(WebDriver.Window window, Method method, Object[] args) {
+
+	}
+
+	// correct
+	public void afterAnyWindowCall(WebDriver.Window window, Method method, Object[] args, Object result) {
+	}
+
 	public void afterSwitchToWindow(String windowName, WebDriver driver) {
 		logger.info("Switched to Window  : " + windowName);
 
 	}
 
-	@Override
 	public void onException(Throwable throwable, WebDriver driver) {
 
 	}
-
-	@Override
+//correct
+	public void afterSendKeys(Alert alert, String text) {};
+	
+	
+	//correct
+	public void beforeBack(WebDriver.Navigation navigation) {};
+	
+	
+	//correct
+	public void beforeSendKeys(WebElement element, CharSequence... keysToSend) {};
 	public <X> void beforeGetScreenshotAs(OutputType<X> target) {
 		logger.info("Taking screen shot");
 
 	}
 
-	@Override
 	public <X> void afterGetScreenshotAs(OutputType<X> target, X screenshot) {
 
 	}
-
-	@Override
+//correct
+	public void beforeGetText(WebElement element) {};
+	public void afterGetText(WebElement element, String result) {};
 	public void beforeGetText(WebElement element, WebDriver driver) {
-		//logger.info("Getting text from element  : " + element.getText());
+		// logger.info("Getting text from element : " + element.getText());
 
 	}
 
-	@Override
 	public void afterGetText(WebElement element, WebDriver driver, String text) {
-		//logger.info("Got text from element  : " + element.getText());
+		// logger.info("Got text from element : " + element.getText());
 
 	}
 

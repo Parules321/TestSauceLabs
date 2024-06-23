@@ -48,11 +48,11 @@ public class ExtentReportListener extends TestListenerAdapter {
 		//htmlReporter.flush();
 
 		extent = new ExtentReports();
-		extent.attachReporter(htmlReporter); // attach extent to htmlrepoter becuase extend builds html reprort
+		extent.attachReporter(htmlReporter); // attach extent to htmlrepoter becuase extent builds html reprort
 
 		// extent report configurations
-		extent.setSystemInfo("Name of tester: ", "Manvir");
-		extent.setSystemInfo("Env", "Production");
+		extent.setSystemInfo("Name of tester: ", "Parul");
+		extent.setSystemInfo("Env", "QAT");
 		extent.setSystemInfo("Website", "https://naveenautomationlabs.com/opencart/index.php?route=account/login");
 
 	}

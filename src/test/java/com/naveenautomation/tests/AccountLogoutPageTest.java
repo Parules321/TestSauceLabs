@@ -2,6 +2,7 @@ package com.naveenautomation.tests;
 
 import java.net.MalformedURLException;
 
+import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -29,6 +30,8 @@ public class AccountLogoutPageTest extends TestBase {
 		accountPage = loginPage.submitCorrectLoginInfo(username, password);
 		logoutPage = accountPage.clickMyAccountLogOutBtn();
 		String logoutText = logoutPage.getLogoutMsgText();
+//		Alert alert = getDriverCopy().switchTo().alert();
+//		alert.sendKeys("just testing alerts");
 		Assert.assertEquals("Account Logout", logoutText);
 	}
 

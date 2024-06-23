@@ -10,7 +10,8 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
 import org.testng.annotations.BeforeClass;
 
 import com.naveenautomation.browsers.Browsers;
@@ -22,11 +23,14 @@ public class TestBase {
 	private static String defaultBrowser;
 	private static String defaultEnv;
 	public static Logger logger;
+	//private WebDriverListener listener = new WebDriverEvents();
+	//private EventFiringDecorator <WebDriver> eDriver = new EventFiringDecorator<WebDriver>(listener);
 	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-
+	
 	@BeforeClass
 	public void setUpLogger() {
-		logger = Logger.getLogger(TestBase.class);
+		//logger = LogManager.getLogger(TestBase.class); // common way to obtain logger in Log4j 2.x
+		logger = Logger.getLogger(TestBase.class); //part of Log4j 1.x
 		PropertyConfigurator.configure("log4j.properties");
 		BasicConfigurator.configure();
 		logger.setLevel(Level.ALL);
@@ -35,6 +39,7 @@ public class TestBase {
 	public void intialization() throws MalformedURLException {
 		setDriver();
 		driverManagement();
+		//eDriver.decorate(getDriverCopy());
 		logger.info("Loading Page in Browser");
 		getDriverCopy().get(getDefaultEnv());
 	}
@@ -119,7 +124,8 @@ public class TestBase {
 
 		return System.getenv("JENKINS_HOME") != null;
 	}
-
+	// Method to check if a server is reachable using a socket connection
+	//use below for jenkns too
 	private static boolean isGridReady(String host, int port, int timeout) {
 		Socket socket = new Socket();
 		try {

@@ -153,3 +153,222 @@
 2024-03-18 10:16:05 INFO  TestBase:83 - Found element by : By.cssSelector: #content div>div form>input
 2024-03-18 10:16:05 INFO  TestBase:89 - Clicking on element by : [[ChromeDriver: chrome on WINDOWS (513bc60b852222dd00b28abecbafa706)] -> css selector: #content div>div form>input]
 2024-03-18 10:16:06 INFO  TestBase:17 - Test Passed : validateLogin
+2024-03-31 09:19:57 INFO  TestBase:21 - Launching Chrome Browser
+2024-03-31 09:20:01 INFO  TestBase:38 - Loading Page in Browser
+2024-03-31 09:20:44 INFO  TestBase:21 - Launching Chrome Browser
+2024-03-31 09:20:45 INFO  TestBase:38 - Loading Page in Browser
+2024-03-31 09:21:38 INFO  TestBase:21 - Launching Chrome Browser
+2024-03-31 09:21:39 INFO  TestBase:38 - Loading Page in Browser
+2024-03-31 09:52:26 INFO  TestBase:21 - Launching Chrome Browser
+2024-03-31 09:52:28 INFO  TestBase:38 - Loading Page in Browser
+2024-03-31 10:00:45 INFO  TestBase:21 - Launching Chrome Browser
+2024-03-31 10:00:47 INFO  TestBase:38 - Loading Page in Browser
+2024-06-01 08:36:31 INFO  TestBase:26 - Test Skipped : validateSubmitAddress
+2024-06-01 08:36:31 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-01 08:36:31 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-01 08:36:45 INFO  TestBase:38 - Loading Page in Browser
+2024-06-01 08:36:45 INFO  TestBase:38 - Loading Page in Browser
+2024-06-01 08:36:48 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-01 08:36:48 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-01 08:36:49 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-01 08:36:50 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-01 08:36:52 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-01 08:36:58 INFO  TestBase:38 - Loading Page in Browser
+2024-06-01 08:37:01 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-01 08:37:04 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-10 15:55:57 INFO  TestBase:26 - Test Skipped : validateSignOutFromMyAccountDropDwn
+2024-06-10 15:55:57 INFO  TestBase:26 - Test Skipped : validateLogin
+2024-06-10 15:55:57 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 15:55:57 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 15:56:23 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 15:56:23 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 15:56:31 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-10 15:56:31 INFO  TestBase:13 - Test Starts : validateSubmitAddress
+2024-06-10 15:56:34 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-10 15:56:38 INFO  TestBase:17 - Test Passed : validateSubmitAddress
+2024-06-10 16:29:57 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:29:57 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:29:57 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:30:00 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:30:00 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:30:00 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:30:02 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-10 16:30:02 INFO  TestBase:13 - Test Starts : validateSubmitAddress
+2024-06-10 16:30:02 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:30:04 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-10 16:30:05 INFO  TestBase:17 - Test failed, Retrying for 0 ,Test Name : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:30:05 INFO  TestBase:26 - Test Skipped : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:30:05 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:30:06 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:30:08 INFO  TestBase:17 - Test Passed : validateSubmitAddress
+2024-06-10 16:30:08 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:30:10 INFO  TestBase:17 - Test failed, Retrying for 1 ,Test Name : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:30:10 INFO  TestBase:26 - Test Skipped : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:30:11 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:30:11 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:30:14 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:30:16 INFO  TestBase:21 - Test Failed !!!!! Taking Screenshot : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:30:16 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:30:17 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:30:19 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-10 16:30:21 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-10 16:32:50 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:32:50 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:32:50 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:32:52 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:32:52 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:32:52 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:32:53 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:32:54 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-10 16:32:55 INFO  TestBase:13 - Test Starts : validateSubmitAddress
+2024-06-10 16:32:56 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-10 16:32:57 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-10 16:32:57 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-10 16:32:58 INFO  TestBase:38 - Loading Page in Browser
+2024-06-10 16:33:01 INFO  TestBase:17 - Test Passed : validateSubmitAddress
+2024-06-10 16:33:01 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-10 16:33:03 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:06:11 INFO  TestBase:26 - Test Skipped : validateLogin
+2024-06-22 21:06:11 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:06:11 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:06:16 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:06:16 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:06:19 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:06:19 INFO  TestBase:13 - Test Starts : validateSubmitAddress
+2024-06-22 21:06:21 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:06:21 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:06:22 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:06:24 INFO  TestBase:17 - Test Passed : validateSubmitAddress
+2024-06-22 21:06:25 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:06:27 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:09:50 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:09:52 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:10:11 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:10:13 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:11:07 INFO  TestBase:26 - Test Skipped : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:11:07 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:11:07 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:11:07 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:11:10 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:11:10 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:11:10 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:11:11 INFO  TestBase:13 - Test Starts : validateSubmitAddress
+2024-06-22 21:11:12 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:11:12 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:11:13 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:11:14 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:11:17 INFO  TestBase:17 - Test Passed : validateSubmitAddress
+2024-06-22 21:13:05 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:13:05 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:13:05 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:13:08 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:13:08 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:13:08 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:13:10 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:13:10 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:13:10 INFO  TestBase:13 - Test Starts : validateSubmitAddress
+2024-06-22 21:13:12 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:13:13 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:13:13 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:13:14 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:13:16 INFO  TestBase:17 - Test Passed : validateSubmitAddress
+2024-06-22 21:13:17 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:13:19 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:18:46 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:18:48 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:19:11 INFO  TestBase:26 - Test Skipped : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:19:11 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:19:11 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:19:11 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:19:14 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:19:14 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:19:14 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:19:15 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:19:16 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:19:16 INFO  TestBase:13 - Test Starts : validateSubmitAddress
+2024-06-22 21:19:17 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:19:19 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:19:21 INFO  TestBase:17 - Test Passed : validateSubmitAddress
+2024-06-22 21:21:01 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:21:03 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:21:05 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:21:07 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:21:07 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:21:08 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:21:11 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:21:13 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:21:13 INFO  TestBase:26 - Test Skipped : validateSubmitAddress
+2024-06-22 21:21:13 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:21:14 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:21:17 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:21:18 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:25:19 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:25:21 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:25:24 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:25:26 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:25:26 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:25:27 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:25:30 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:25:32 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:25:32 INFO  TestBase:26 - Test Skipped : validateSubmitAddress
+2024-06-22 21:25:32 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:25:33 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:25:35 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:25:36 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:27:24 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:27:26 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:27:28 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:27:30 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:27:30 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:27:31 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:27:33 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:27:35 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:27:35 INFO  TestBase:26 - Test Skipped : validateSubmitAddress
+2024-06-22 21:27:35 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:27:36 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:27:39 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:27:40 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:35:11 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:35:13 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:41:55 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:42:07 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:42:09 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:42:12 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:42:12 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:42:14 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:42:16 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:42:18 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:42:18 INFO  TestBase:26 - Test Skipped : validateSubmitAddress
+2024-06-22 21:42:18 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:42:19 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:42:22 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:42:23 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:42:51 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:42:52 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:42:55 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:42:57 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:42:57 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:42:58 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:43:01 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:43:03 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
+2024-06-22 21:43:03 INFO  TestBase:26 - Test Skipped : validateSubmitAddress
+2024-06-22 21:43:03 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:43:04 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:43:07 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:43:08 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:43:33 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:43:33 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:43:33 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:43:36 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:43:36 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:43:36 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:43:38 INFO  TestBase:13 - Test Starts : validateLogin
+2024-06-22 21:43:38 INFO  TestBase:13 - Test Starts : validateSubmitAddress
+2024-06-22 21:43:38 INFO  TestBase:13 - Test Starts : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:43:39 INFO  TestBase:17 - Test Passed : validateLogin
+2024-06-22 21:43:40 INFO  TestBase:17 - Test Passed : validateSignOutFromMyAccountDropDwn
+2024-06-22 21:43:41 INFO  TestBase:21 - Launching Chrome Browser
+2024-06-22 21:43:43 INFO  TestBase:17 - Test Passed : validateSubmitAddress
+2024-06-22 21:43:44 INFO  TestBase:43 - Loading Page in Browser
+2024-06-22 21:43:46 INFO  TestBase:13 - Test Starts : validateSignOutFromSideMenuBtn
+2024-06-22 21:43:48 INFO  TestBase:17 - Test Passed : validateSignOutFromSideMenuBtn
