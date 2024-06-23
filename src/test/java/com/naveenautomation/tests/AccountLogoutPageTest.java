@@ -40,8 +40,9 @@ public class AccountLogoutPageTest extends TestBase {
 		accountPage = loginPage.submitCorrectLoginInfo(username, password);
 		logoutPage = accountPage.clickSideNavLogOutBtn();
 		String logoutText = logoutPage.getLogoutMsgText();
+		System.out.println("Always use soft assert.");
 		Assert.assertEquals("Account Logout", logoutText);
-		//always use softAssert
+		
 	}
 
 	@AfterMethod
