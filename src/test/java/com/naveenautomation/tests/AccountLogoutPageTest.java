@@ -41,6 +41,7 @@ public class AccountLogoutPageTest extends TestBase {
 		logoutPage = accountPage.clickSideNavLogOutBtn();
 		String logoutText = logoutPage.getLogoutMsgText();
 		Assert.assertEquals("Account Logout", logoutText);
+		//always use softAssert
 	}
 
 	@AfterMethod
