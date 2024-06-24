@@ -1,22 +1,17 @@
 package com.naveenautomation.testbase;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
-import java.net.Socket;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringDecorator;
-import org.openqa.selenium.support.events.WebDriverListener;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeClass;
 
 import com.naveenautomation.browsers.Browsers;
 import com.naveenautomation.env.Environment;
-import com.naveenautomation.listeners.WebDriverEvents;
 import com.naveenautomation.utility.WebDriverUtil;
 
 public class TestBase {
@@ -54,8 +49,10 @@ public class TestBase {
 	}
 
 	private void setDriver() throws MalformedURLException {
+		
+		if(isRunningOnJenkins()) {driver.set(new RemoteWebDriver(null));}
 
-		switch (getDefaultBrowser()) {
+		else {	switch (getDefaultBrowser()) {
 		case "chrome":
 			setDefaultChromeDriver();
 			break;
@@ -68,7 +65,7 @@ public class TestBase {
 
 		default:
 			throw new IllegalArgumentException();
-		}
+		}}
 	}
 
 	public void tearDown() {
@@ -80,21 +77,23 @@ public class TestBase {
 	}
 
 	private static String getDefaultBrowser() {
-		if (isRunningOnJenkins()) {
-			defaultBrowser = System.getProperty("browser");
-		} else {
-			defaultBrowser = Browsers.CHROME.getBrowserName();
-		}
+//		if (isRunningOnJenkins()) {
+//			defaultBrowser = System.getProperty("browser");
+//		} else {
+//			defaultBrowser = Browsers.CHROME.getBrowserName();
+//		}
+		defaultBrowser = Browsers.CHROME.getBrowserName();
 		return defaultBrowser;
 
 	}
 
 	private static String getDefaultEnv() {
-		if (isRunningOnJenkins()) {
-			defaultEnv = System.getProperty("environment");
-		} else {
-			defaultEnv = Environment.PROD.getEnvUrl();
-		}
+//		if (isRunningOnJenkins()) {
+//			defaultEnv = System.getProperty("environment");
+//		} else {
+//			defaultEnv = Environment.PROD.getEnvUrl();
+//		}
+		defaultEnv = Environment.PROD.getEnvUrl();
 		return defaultEnv;
 	}
 	
@@ -102,26 +101,29 @@ public class TestBase {
 	
 	private static void setDefaultFirefoxDriver() throws MalformedURLException {
 
-		if (isRunningOnJenkins()) {
-			WebDriverUtil.setRemoteFirefoxDriver("Standard");
-		} else {
-			WebDriverUtil.setFirefoxDriver("Headless");
-		}
+//		if (isRunningOnJenkins()) {
+//			WebDriverUtil.setRemoteFirefoxDriver("Standard");
+//		} else {
+//			WebDriverUtil.setFirefoxDriver("Headless");
+//		}
+		WebDriverUtil.setFirefoxDriver("Headless");
 	}
 	
 	private static void setDefaultEdgeDriver() throws MalformedURLException {
-	if (isRunningOnJenkins()) {
-		WebDriverUtil.setRemoteEdgeDriver("Standard");
-	} else {
+//	if (isRunningOnJenkins()) {
+//		WebDriverUtil.setRemoteEdgeDriver("Standard");
+//	} else {
+//		WebDriverUtil.setEdgeDriver("Incognito");
+//	}
 		WebDriverUtil.setEdgeDriver("Incognito");
-	}
 }
 	
 	private static void setDefaultChromeDriver() throws MalformedURLException {
-	if (isRunningOnJenkins()) {
-		WebDriverUtil.setRemoteChromeDriver("Standard");
-	} else {
-		WebDriverUtil.setChromeDriver("Incognito");}
+//	if (isRunningOnJenkins()) {
+//		WebDriverUtil.setRemoteChromeDriver("Standard");
+//	} else {
+//		WebDriverUtil.setChromeDriver("Incognito");}
+		WebDriverUtil.setChromeDriver("Incognito");
 	}
 
 //	private static void setDefaultFirefoxDriver() throws MalformedURLException {
