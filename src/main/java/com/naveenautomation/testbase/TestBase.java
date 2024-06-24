@@ -60,7 +60,7 @@ public class TestBase {
 	    capabilities.setCapability(CapabilityType.BROWSER_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
 	    capabilities.setCapability(CapabilityType.BROWSER_VERSION, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
 	    capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
-	    capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
+	   // capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
 		driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));}
 		
 //		if(isRunningOnJenkins()) {
