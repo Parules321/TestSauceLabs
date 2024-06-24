@@ -53,11 +53,15 @@ public class TestBase {
 
 	private void setDriver() throws MalformedURLException {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setBrowserName(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		//capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
-		driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));
+//		capabilities.setBrowserName(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+//		capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+//		capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+//		capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
+	    capabilities.setCapability(CapabilityType.BROWSER_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+	    capabilities.setCapability(CapabilityType.BROWSER_VERSION, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+	    capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
+	    capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
+		driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));}
 		
 //		if(isRunningOnJenkins()) {
 //			DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -81,7 +85,7 @@ public class TestBase {
 //		default:
 //			throw new IllegalArgumentException();
 //		}}
-	}
+//	}
 
 	public void tearDown() {
 		getDriverCopy().close();
