@@ -54,6 +54,9 @@ public class TestBase {
 		
 		if(isRunningOnJenkins()) {
 			DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setBrowserName(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+			capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+			capabilities.setCapability("Platform", System.getenv("SAUCE_ONDEMAND_BROWSERS"));
 			capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
 			driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));}
 
