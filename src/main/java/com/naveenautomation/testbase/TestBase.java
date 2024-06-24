@@ -1,14 +1,13 @@
 package com.naveenautomation.testbase;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeClass;
@@ -56,7 +55,7 @@ public class TestBase {
 		if(isRunningOnJenkins()) {
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
-			driver.set(new RemoteWebDriver(capabilities));}
+			driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));}
 
 		else {	switch (getDefaultBrowser()) {
 		case "chrome":
