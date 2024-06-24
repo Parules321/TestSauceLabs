@@ -8,6 +8,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeClass;
@@ -54,8 +55,8 @@ public class TestBase {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setBrowserName(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
 		capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		capabilities.setCapability("platformName", System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
+		capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		//capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
 		driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));
 		
 //		if(isRunningOnJenkins()) {
