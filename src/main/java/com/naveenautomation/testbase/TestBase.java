@@ -22,7 +22,7 @@ public class TestBase {
 	public static Logger logger;
 	//private WebDriverListener listener = new WebDriverEvents();
 	//private EventFiringDecorator <WebDriver> eDriver = new EventFiringDecorator<WebDriver>(listener);
-	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<RemoteWebDriver>();
 	public static final String sauceLabsUsername = "oauth-sparulonline-0b577";
 	public static final String sauceLabsAccessKey = "76941f45-82f1-41f1-8bdc-cc8eb15a25e3";
 	public static final String sauceLabsUrl = "https://" + sauceLabsUsername + ":" + sauceLabsAccessKey + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
@@ -51,29 +51,35 @@ public class TestBase {
 	}
 
 	private void setDriver() throws MalformedURLException {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setBrowserName(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		capabilities.setCapability("platformName", System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
+		driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));
 		
-		if(isRunningOnJenkins()) {
-			DesiredCapabilities capabilities = new DesiredCapabilities();
-			capabilities.setBrowserName(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-			capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-			capabilities.setCapability("platformName", System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-			capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
-			driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));}
+//		if(isRunningOnJenkins()) {
+//			DesiredCapabilities capabilities = new DesiredCapabilities();
+//			capabilities.setBrowserName(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+//			capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+//			capabilities.setCapability("platformName", System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+//			capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
+//			driver.set(new RemoteWebDriver(new URL (sauceLabsUrl), capabilities));}
 
-		else {	switch (getDefaultBrowser()) {
-		case "chrome":
-			setDefaultChromeDriver();
-			break;
-		case "firefox":
-			setDefaultFirefoxDriver();
-			break;
-		case "MicrosoftEdge":
-			setDefaultEdgeDriver();
-			break;
-
-		default:
-			throw new IllegalArgumentException();
-		}}
+//		else {	switch (getDefaultBrowser()) {
+//		case "chrome":
+//			setDefaultChromeDriver();
+//			break;
+//		case "firefox":
+//			setDefaultFirefoxDriver();
+//			break;
+//		case "MicrosoftEdge":
+//			setDefaultEdgeDriver();
+//			break;
+//
+//		default:
+//			throw new IllegalArgumentException();
+//		}}
 	}
 
 	public void tearDown() {
@@ -84,16 +90,16 @@ public class TestBase {
 		return driver.get();
 	}
 
-	private static String getDefaultBrowser() {
+//	private static String getDefaultBrowser() {
 //		if (isRunningOnJenkins()) {
 //			defaultBrowser = System.getProperty("browser");
 //		} else {
 //			defaultBrowser = Browsers.CHROME.getBrowserName();
 //		}
-		defaultBrowser = Browsers.CHROME.getBrowserName();
-		return defaultBrowser;
-
-	}
+//		defaultBrowser = Browsers.CHROME.getBrowserName();
+//		return defaultBrowser;
+//
+//	}
 
 	private static String getDefaultEnv() {
 //		if (isRunningOnJenkins()) {
@@ -159,11 +165,11 @@ public class TestBase {
 //		}
 //	}
 
-	private static boolean isRunningOnJenkins() {
-		// Check if Jenkins-specific environment variable is set
-
-		return System.getenv("JENKINS_HOME") != null;
-	}
+//	private static boolean isRunningOnJenkins() {
+//		// Check if Jenkins-specific environment variable is set
+//
+//		return System.getenv("JENKINS_HOME") != null;
+//	}
 	// Method to check if a server is reachable using a socket connection
 	//use below for jenkns too
 //	private static boolean isGridReady(String host, int port, int timeout) {
