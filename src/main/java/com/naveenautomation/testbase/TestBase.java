@@ -26,6 +26,10 @@ public class TestBase {
 	//private WebDriverListener listener = new WebDriverEvents();
 	//private EventFiringDecorator <WebDriver> eDriver = new EventFiringDecorator<WebDriver>(listener);
 	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	public static final String sauceLabsUsername = "oauth-sparulonline-0b577";
+	public static final String sauceLabsAccessKey = "76941f45-82f1-41f1-8bdc-cc8eb15a25e3";
+	public static final String sauceLabsUrl = "https://" + sauceLabsUsername + ":" + sauceLabsAccessKey + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
+	//you can further abstract username and accesskey in a separate enum class and then not hard code the sauce labs url
 	
 	@BeforeClass
 	public void setUpLogger() {
@@ -93,31 +97,57 @@ public class TestBase {
 		}
 		return defaultEnv;
 	}
-
+	
+	
+	
 	private static void setDefaultFirefoxDriver() throws MalformedURLException {
 
-		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
+		if (isRunningOnJenkins()) {
 			WebDriverUtil.setRemoteFirefoxDriver("Standard");
 		} else {
 			WebDriverUtil.setFirefoxDriver("Headless");
 		}
 	}
-
+	
 	private static void setDefaultEdgeDriver() throws MalformedURLException {
-		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
-			WebDriverUtil.setRemoteEdgeDriver("Incognito");
-		} else {
-			WebDriverUtil.setEdgeDriver("Standard");
-		}
+	if (isRunningOnJenkins()) {
+		WebDriverUtil.setRemoteEdgeDriver("Standard");
+	} else {
+		WebDriverUtil.setEdgeDriver("Incognito");
+	}
+}
+	
+	private static void setDefaultChromeDriver() throws MalformedURLException {
+	if (isRunningOnJenkins()) {
+		WebDriverUtil.setRemoteChromeDriver("Standard");
+	} else {
+		WebDriverUtil.setChromeDriver("Incognito");}
 	}
 
-	private static void setDefaultChromeDriver() throws MalformedURLException {
-		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 20000)) {
-			WebDriverUtil.setRemoteChromeDriver("Standard");
-		} else {
-			WebDriverUtil.setChromeDriver("Incognito");
-		}
-	}
+//	private static void setDefaultFirefoxDriver() throws MalformedURLException {
+//
+//		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
+//			WebDriverUtil.setRemoteFirefoxDriver("Standard");
+//		} else {
+//			WebDriverUtil.setFirefoxDriver("Headless");
+//		}
+//	}
+//
+//	private static void setDefaultEdgeDriver() throws MalformedURLException {
+//		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 15000)) {
+//			WebDriverUtil.setRemoteEdgeDriver("Incognito");
+//		} else {
+//			WebDriverUtil.setEdgeDriver("Standard");
+//		}
+//	}
+//
+//	private static void setDefaultChromeDriver() throws MalformedURLException {
+//		if (isRunningOnJenkins() && isGridReady("localhost", 4444, 20000)) {
+//			WebDriverUtil.setRemoteChromeDriver("Standard");
+//		} else {
+//			WebDriverUtil.setChromeDriver("Incognito");
+//		}
+//	}
 
 	private static boolean isRunningOnJenkins() {
 		// Check if Jenkins-specific environment variable is set
@@ -126,14 +156,14 @@ public class TestBase {
 	}
 	// Method to check if a server is reachable using a socket connection
 	//use below for jenkns too
-	private static boolean isGridReady(String host, int port, int timeout) {
-		Socket socket = new Socket();
-		try {
-			socket.connect(new InetSocketAddress(host, port), timeout);
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
-	}
+//	private static boolean isGridReady(String host, int port, int timeout) {
+//		Socket socket = new Socket();
+//		try {
+//			socket.connect(new InetSocketAddress(host, port), timeout);
+//			return true;
+//		} catch (IOException e) {
+//			return false;
+//		}
+//	}
 
 }
