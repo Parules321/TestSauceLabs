@@ -61,15 +61,24 @@ public class TestBase {
 //		capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
 //		capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
 //		capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
-		//capabilities.setCapability(CapabilityType.BROWSER_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		//capabilities.setCapability(CapabilityType.BROWSER_VERSION, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		//capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
-		//capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
+		// capabilities.setCapability(CapabilityType.BROWSER_NAME,
+		// System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		// capabilities.setCapability(CapabilityType.BROWSER_VERSION,
+		// System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		// capabilities.setCapability(CapabilityType.PLATFORM_NAME,
+		// System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
+		// capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
 		// Set Sauce Labs specific capabilities
-		capabilities.setCapability("browserName", System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		capabilities.setCapability("browserVersion", System.getenv("SAUCE_ONDEMAND_BROWSER_VERSION"));
-		capabilities.setCapability("platformName", System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
-		//capabilities.setCapability("name", System.getenv("SAUCE_BUILD_NAME"));
+		// capabilities.setCapability("browserName",
+		// System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		// capabilities.setCapability("browserVersion",
+		// System.getenv("SAUCE_ONDEMAND_BROWSER_VERSION"));
+		// capabilities.setCapability("platformName",
+		// System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
+		// capabilities.setCapability("name", System.getenv("SAUCE_BUILD_NAME"));
+		capabilities.setCapability("browserName", System.getenv("SELENIUM_BROWSER"));
+		capabilities.setCapability("browserVersion", System.getenv("SELENIUM_VERSION"));
+		capabilities.setCapability("platformName", System.getenv("SELENIUM_PLATFORM"));
 		driver.set(new RemoteWebDriver(new URL(sauceLabsUrl), capabilities));
 	}
 
