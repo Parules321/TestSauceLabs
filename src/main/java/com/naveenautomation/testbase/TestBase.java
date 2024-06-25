@@ -21,18 +21,22 @@ public class TestBase {
 	private static String defaultBrowser;
 	private static String defaultEnv;
 	public static Logger logger;
-	//private WebDriverListener listener = new WebDriverEvents();
-	//private EventFiringDecorator <WebDriver> eDriver = new EventFiringDecorator<WebDriver>(listener);
+	// private WebDriverListener listener = new WebDriverEvents();
+	// private EventFiringDecorator <WebDriver> eDriver = new
+	// EventFiringDecorator<WebDriver>(listener);
 	public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<RemoteWebDriver>();
 	public static final String sauceLabsUsername = "oauth-sparulonline-0b577";
 	public static final String sauceLabsAccessKey = "76941f45-82f1-41f1-8bdc-cc8eb15a25e3";
-	public static final String sauceLabsUrl = "https://" + sauceLabsUsername + ":" + sauceLabsAccessKey + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
-	//you can further abstract username and accesskey in a separate enum class and then not hard code the sauce labs url
-	
+	public static final String sauceLabsUrl = "https://" + sauceLabsUsername + ":" + sauceLabsAccessKey
+			+ "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
+	// you can further abstract username and accesskey in a separate enum class and
+	// then not hard code the sauce labs url
+
 	@BeforeClass
 	public void setUpLogger() {
-		//logger = LogManager.getLogger(TestBase.class); // common way to obtain logger in Log4j 2.x
-		logger = Logger.getLogger(TestBase.class); //part of Log4j 1.x
+		// logger = LogManager.getLogger(TestBase.class); // common way to obtain logger
+		// in Log4j 2.x
+		logger = Logger.getLogger(TestBase.class); // part of Log4j 1.x
 		PropertyConfigurator.configure("log4j.properties");
 		BasicConfigurator.configure();
 		logger.setLevel(Level.ALL);
@@ -41,7 +45,7 @@ public class TestBase {
 	public void intialization() throws MalformedURLException {
 		setDriver();
 		driverManagement();
-		//eDriver.decorate(getDriverCopy());
+		// eDriver.decorate(getDriverCopy());
 		logger.info("Loading Page in Browser");
 		getDriverCopy().get(getDefaultEnv());
 	}
@@ -57,12 +61,15 @@ public class TestBase {
 //		capabilities.setVersion(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
 //		capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
 //		capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
-	   // capabilities.setCapability(CapabilityType.BROWSER_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-	   // capabilities.setCapability(CapabilityType.BROWSER_VERSION, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-	  //  capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
-	    capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
-		driver.set(new RemoteWebDriver(new URL ("https://oauth-sparulonline-0b577:76941f45-82f1-41f1-8bdc-cc8eb15a25e3@ondemand.us-west-1.saucelabs.com:443/wd/hub"), capabilities));}
-		
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		capabilities.setCapability(CapabilityType.BROWSER_VERSION, System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
+		capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
+		driver.set(new RemoteWebDriver(new URL(
+				"https://oauth-sparulonline-0b577:76941f45-82f1-41f1-8bdc-cc8eb15a25e3@ondemand.us-west-1.saucelabs.com:443/wd/hub"),
+				capabilities));
+	}
+
 //		if(isRunningOnJenkins()) {
 //			DesiredCapabilities capabilities = new DesiredCapabilities();
 //			capabilities.setBrowserName(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
@@ -115,9 +122,7 @@ public class TestBase {
 		defaultEnv = Environment.PROD.getEnvUrl();
 		return defaultEnv;
 	}
-	
-	
-	
+
 	private static void setDefaultFirefoxDriver() throws MalformedURLException {
 
 //		if (isRunningOnJenkins()) {
@@ -127,7 +132,7 @@ public class TestBase {
 //		}
 		WebDriverUtil.setFirefoxDriver("Headless");
 	}
-	
+
 	private static void setDefaultEdgeDriver() throws MalformedURLException {
 //	if (isRunningOnJenkins()) {
 //		WebDriverUtil.setRemoteEdgeDriver("Standard");
@@ -135,8 +140,8 @@ public class TestBase {
 //		WebDriverUtil.setEdgeDriver("Incognito");
 //	}
 		WebDriverUtil.setEdgeDriver("Incognito");
-}
-	
+	}
+
 	private static void setDefaultChromeDriver() throws MalformedURLException {
 //	if (isRunningOnJenkins()) {
 //		WebDriverUtil.setRemoteChromeDriver("Standard");
@@ -176,7 +181,7 @@ public class TestBase {
 //		return System.getenv("JENKINS_HOME") != null;
 //	}
 	// Method to check if a server is reachable using a socket connection
-	//use below for jenkns too
+	// use below for jenkns too
 //	private static boolean isGridReady(String host, int port, int timeout) {
 //		Socket socket = new Socket();
 //		try {
