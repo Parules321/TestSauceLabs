@@ -70,9 +70,7 @@ public class TestBase {
 		//capabilities.setCapability("browserVersion", System.getenv("SAUCE_ONDEMAND_BROWSER_VERSION"));
 		//capabilities.setCapability("platformName", System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
 		capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
-		driver.set(new RemoteWebDriver(new URL(
-				"https://oauth-sparulonline-0b577:76941f45-82f1-41f1-8bdc-cc8eb15a25e3@ondemand.us-west-1.saucelabs.com:443/wd/hub"),
-				capabilities));
+		driver.set(new RemoteWebDriver(new URL(sauceLabsUrl), capabilities));
 	}
 
 //		if(isRunningOnJenkins()) {
