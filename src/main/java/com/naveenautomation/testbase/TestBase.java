@@ -66,10 +66,10 @@ public class TestBase {
 		//capabilities.setCapability(CapabilityType.PLATFORM_NAME, System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
 		//capabilities.setCapability("build", System.getenv("SAUCE_BUILD_NAME"));
 		// Set Sauce Labs specific capabilities
-		//capabilities.setCapability("browserName", System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-		//capabilities.setCapability("browserVersion", System.getenv("SAUCE_ONDEMAND_BROWSER_VERSION"));
-		//capabilities.setCapability("platformName", System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
-		capabilities.setCapability("name", System.getenv("SAUCE_BUILD_NAME"));
+		capabilities.setCapability("browserName", System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+		capabilities.setCapability("browserVersion", System.getenv("SAUCE_ONDEMAND_BROWSER_VERSION"));
+		capabilities.setCapability("platformName", System.getenv("SAUCE_ONDEMAND_PLATFORM_NAME"));
+		//capabilities.setCapability("name", System.getenv("SAUCE_BUILD_NAME"));
 		driver.set(new RemoteWebDriver(new URL(sauceLabsUrl), capabilities));
 	}
 
